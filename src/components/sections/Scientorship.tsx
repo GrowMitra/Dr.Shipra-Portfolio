@@ -388,8 +388,6 @@
 
 
 
-
-
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import {
@@ -486,31 +484,31 @@ export default function Scientorship() {
   return (
     <section
       id="scientorship"
-      className="relative overflow-hidden bg-gradient-to-b from-white via-sky-50/60 to-white py-32 text-slate-800 border-t border-slate-100"
+      className="relative overflow-hidden bg-white py-32 text-slate-800 border-t border-slate-100"
     >
-      {/* PREMIUM SKY BLUE & LIQUID CYAN GRADIENT MESH ACCENTS */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-40" />
+      {/* PURE LIGHT MATRIX MESH BACKGROUND */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-60 pointer-events-none" />
       
-      {/* Ambient Glowing Blur Orbs */}
-      <div className="absolute left-[-150px] top-[-50px] h-[600px] w-[600px] rounded-full bg-sky-200/40 blur-[130px]" />
-      <div className="absolute bottom-[-150px] right-[-150px] h-[600px] w-[600px] rounded-full bg-cyan-100/50 blur-[140px]" />
+      {/* Ambient Soft Sky Blue Aura Blurs */}
+      <div className="absolute left-[-150px] top-[-50px] h-[600px] w-[600px] rounded-full bg-sky-100/40 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[-150px] right-[-150px] h-[600px] w-[600px] rounded-full bg-cyan-50/50 blur-[120px] pointer-events-none" />
 
       {/* CONTAINER */}
       <div ref={containerRef} className="relative mx-auto max-w-7xl px-6 z-10">
         
         {/* HEADER */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
           className="mx-auto mb-24 max-w-4xl text-center"
         >
-          <span className="inline-flex items-center rounded-full border border-sky-200 bg-sky-50/80 px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-sky-700 shadow-sm backdrop-blur-sm">
+          <span className="inline-flex items-center rounded-full border border-sky-200 bg-sky-50 px-5 py-2 text-xs font-bold uppercase tracking-widest text-sky-700 shadow-sm">
             Research Team
           </span>
 
-          <h2 className="mt-6 text-4xl font-extrabold leading-tight tracking-tight text-slate-950 md:text-6xl lg:text-7xl">
+          <h2 className="mt-6 text-4xl font-extrabold tracking-tight text-slate-950 md:text-6xl lg:text-7xl">
             Building Future
             <br />
             <span className="bg-gradient-to-r from-sky-600 via-cyan-600 to-blue-600 bg-clip-text text-transparent">
@@ -523,22 +521,22 @@ export default function Scientorship() {
           </p>
         </motion.div>
 
-        {/* PHILOSOPHY SECTION (Elevated Light Panel) */}
+        {/* PHILOSOPHY SECTION (Elevated Sky Panel) */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="relative mb-24 overflow-hidden rounded-[40px] border border-sky-100/80 bg-white/90 p-8 shadow-[0_20px_50px_rgba(186,230,253,0.15)] backdrop-blur-md md:p-14"
+          className="relative mb-24 overflow-hidden rounded-[40px] border border-sky-100 bg-white p-8 shadow-[0_15px_40px_rgba(186,230,253,0.15)] md:p-14"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-sky-500/5 via-transparent to-cyan-500/5" />
+          <div className="absolute inset-0 bg-gradient-to-br from-sky-500/5 via-transparent to-cyan-500/5 pointer-events-none" />
 
           <div className="relative flex flex-col items-start gap-8 md:flex-row md:items-center">
-            <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-sky-50 text-sky-600 border border-sky-100 shadow-sm">
-              <GraduationCap className="h-10 w-10" />
+            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-sky-50 text-sky-600 border border-sky-100 shadow-inner">
+              <GraduationCap className="h-8 w-8 stroke-[2.5]" />
             </div>
 
-            <div className="flex-1">
+            <div className="flex-1 text-left">
               <h3 className="text-2xl font-extrabold tracking-tight text-slate-950 md:text-3xl">
                 Mentorship Philosophy
               </h3>
@@ -547,9 +545,9 @@ export default function Scientorship() {
                 Every transformative discovery begins with curiosity, discipline, and mentorship. Our mission is to cultivate world-class scientific thinkers capable of redefining the future of molecular medicine and biotechnology innovation.
               </p>
 
-              <div className="mt-6 flex items-center gap-2.5">
-                <div className="h-2 w-2 rounded-full bg-sky-500 shadow-[0_0_12px_rgba(14,165,233,0.8)]" />
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-sky-700">
+              <div className="mt-6 flex items-center gap-2">
+                <div className="h-2 w-2 rounded-full bg-sky-500 shadow-[0_0_10px_rgba(14,165,233,0.6)]" />
+                <p className="text-xs font-bold uppercase tracking-wider text-sky-700">
                   Dr. Elena Chen
                 </p>
               </div>
@@ -562,36 +560,34 @@ export default function Scientorship() {
           {team.map((member, index) => (
             <motion.div
               key={member.id}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{
                 duration: 0.6,
                 delay: index * 0.05,
               }}
-              className="group relative overflow-hidden rounded-[36px] border border-sky-100/80 bg-white/90 p-2.5 shadow-[0_15px_40px_rgba(186,230,253,0.12)] transition-all duration-500 hover:border-cyan-200 hover:shadow-[0_25px_60px_rgba(6,182,212,0.15)] hover:-translate-y-1.5 backdrop-blur-md"
+              whileHover={{ y: -6 }}
+              className="group relative overflow-hidden rounded-[40px] border border-sky-100 bg-white p-3 shadow-[0_15px_40px_rgba(186,230,253,0.12)] transition-all duration-500 hover:border-sky-300 hover:shadow-[0_25px_50px_rgba(14,165,233,0.18)]"
             >
-              {/* BRAND INNER GLOW LAYER */}
-              <div className="absolute inset-0 bg-gradient-to-br from-sky-400/5 via-transparent to-cyan-400/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
-
-              {/* PROFILE IMAGE VIEWPORT */}
-              <div className="relative h-[300px] overflow-hidden rounded-[28px]">
+              {/* PROFILE IMAGE VIEWPORT — 100% CLEAR VISIBILITY */}
+              <div className="relative h-[300px] overflow-hidden rounded-[28px] bg-slate-50">
                 <img
                   src={member.image}
                   alt={member.name}
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                 />
 
-                {/* READABILITY GRADIENT MASK */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-sky-950/5 to-transparent" />
+                {/* REMOVED BLACKISH/SLATE OVERLAY MASK COMPLETELY */}
+                <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
 
-                {/* SOCIAL FLOATING CONTROL FLOATS */}
-                <div className="absolute right-4 top-4 flex flex-col gap-2.5">
+                {/* SOCIAL FLOATING CONTROL FLOATS WITH LIGHT MODE STYLING */}
+                <div className="absolute right-4 top-4 flex flex-col gap-2 z-10">
                   <a
                     href={member.social.linkedin}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/40 bg-white/90 text-sky-600 shadow-md backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:bg-sky-600 hover:text-white hover:border-transparent"
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-sky-100 bg-white text-sky-600 shadow-md transition-all duration-300 hover:scale-105 hover:bg-sky-50"
                   >
                     <Linkedin className="h-4 w-4" />
                   </a>
@@ -600,27 +596,27 @@ export default function Scientorship() {
                     href={member.social.twitter}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/40 bg-white/90 text-slate-800 shadow-md backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:bg-slate-900 hover:text-white hover:border-transparent"
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-sky-100 bg-white text-slate-800 shadow-md transition-all duration-300 hover:scale-105 hover:bg-slate-50"
                   >
-                    <span className="text-xs font-black">𝕏</span>
+                    <span className="text-xs font-bold">𝕏</span>
                   </a>
 
                   <a
                     href={`mailto:${member.social.email}`}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/40 bg-white/90 text-sky-600 shadow-md backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:bg-cyan-600 hover:text-white hover:border-transparent"
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-sky-100 bg-white text-sky-600 shadow-md transition-all duration-300 hover:scale-105 hover:bg-sky-50"
                   >
                     <Mail className="h-4 w-4" />
                   </a>
                 </div>
               </div>
 
-              {/* CARD DETAILS WRAP */}
-              <div className="p-6">
-                <h3 className="text-xl font-extrabold tracking-tight text-slate-950 transition-colors duration-300 group-hover:text-sky-600">
+              {/* CARD DETAILS WRAP — PREMIUM SKY BLUE FLOATING BASE BOX */}
+              <div className="mt-4 p-5 rounded-[28px] bg-sky-50/90 border border-sky-100/40 transition-colors group-hover:bg-white text-left">
+                <h3 className="text-xl font-extrabold tracking-tight text-slate-900 transition-colors duration-300 group-hover:text-sky-600">
                   {member.name}
                 </h3>
 
-                <p className="mt-1 text-xs font-bold uppercase tracking-[0.15em] text-sky-600">
+                <p className="mt-0.5 text-xs font-bold uppercase tracking-wider text-sky-600">
                   {member.role || 'Research Affiliate'}
                 </p>
 
@@ -666,20 +662,20 @@ export default function Scientorship() {
                 duration: 0.6,
                 delay: index * 0.08,
               }}
-              className="relative overflow-hidden rounded-[30px] border border-sky-100/80 bg-white/80 p-6 md:p-8 shadow-[0_12px_30px_rgba(186,230,253,0.1)] backdrop-blur-sm"
+              className="relative overflow-hidden rounded-[24px] border border-sky-100 bg-white p-6 shadow-[0_12px_30px_rgba(186,230,253,0.1)] backdrop-blur-sm"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-sky-500/5 via-transparent to-cyan-500/5 pointer-events-none" />
 
-              <div className="relative flex items-center gap-5">
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-sky-50 text-sky-600 border border-sky-100 shadow-inner">
-                  <stat.icon className="h-6 w-6" />
+              <div className="relative flex items-center gap-5 text-left">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-sky-50 text-sky-600 border border-sky-100 shadow-inner">
+                  <stat.icon className="h-5 w-5 stroke-[2.5]" />
                 </div>
 
                 <div>
-                  <div className="text-3xl font-extrabold tracking-tight text-slate-950">
+                  <div className="text-2xl font-extrabold tracking-tight text-slate-950">
                     {stat.value}
                   </div>
-                  <p className="text-xs font-semibold text-slate-400 mt-0.5">
+                  <p className="text-xs font-bold uppercase tracking-wider text-slate-400 mt-0.5">
                     {stat.label}
                   </p>
                 </div>

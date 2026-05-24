@@ -352,7 +352,7 @@ const podcasts = [
 export default function Podcasts() {
   const [selectedPodcast, setSelectedPodcast] = useState<any>(null);
 
-  /* ESC KEY TO CLOSE IFRAME POPUP */
+  /* ESC KEY TO CLOSE POPUP */
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -367,16 +367,15 @@ export default function Podcasts() {
     <>
       <section
         id="podcasts"
-        className="relative overflow-hidden bg-gradient-to-b from-white via-sky-50/60 to-white py-32 text-slate-800 border-t border-slate-100"
+        className="relative overflow-hidden bg-white py-32 text-slate-800 border-t border-slate-100"
       >
-        {/* PREMIUM SKY BLUE & LIQUID CYAN GRADIENT MESH ACCENTS */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-40" />
+        {/* LIGHT SURFACE ACCENTS ONLY */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-60 pointer-events-none" />
         
-        {/* Ambient Blurred Background Spheres */}
-        <div className="absolute left-[-120px] top-[10%] h-[600px] w-[600px] rounded-full bg-sky-200/40 blur-[130px]" />
-        <div className="absolute right-[-120px] bottom-[15%] h-[600px] w-[600px] rounded-full bg-cyan-100/50 blur-[140px]" />
+        {/* Soft Fluid Blurs */}
+        <div className="absolute left-[-100px] top-[10%] h-[600px] w-[600px] rounded-full bg-sky-100/40 blur-[120px] pointer-events-none" />
+        <div className="absolute right-[-100px] bottom-[10%] h-[600px] w-[600px] rounded-full bg-cyan-50/50 blur-[120px] pointer-events-none" />
 
-        {/* CONTAINER */}
         <div className="relative mx-auto max-w-7xl px-6 z-10">
           
           {/* HEADER */}
@@ -387,7 +386,7 @@ export default function Podcasts() {
             transition={{ duration: 0.8 }}
             className="mb-28 text-center"
           >
-            <span className="inline-flex items-center rounded-full border border-sky-200 bg-sky-50/80 px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-sky-700 shadow-sm backdrop-blur-sm">
+            <span className="inline-flex items-center rounded-full border border-sky-200 bg-sky-50 px-5 py-2 text-xs font-bold uppercase tracking-[0.2em] text-sky-700 shadow-sm">
               Featured Podcasts
             </span>
 
@@ -404,7 +403,7 @@ export default function Podcasts() {
             </p>
           </motion.div>
 
-          {/* PODCAST LIST ARRAY */}
+          {/* LIST WRAPPER */}
           <div className="space-y-32">
             {podcasts.map((podcast, index) => {
               const isReverse = index % 2 !== 0;
@@ -420,38 +419,38 @@ export default function Podcasts() {
                     isReverse ? 'lg:[&>*:first-child]:order-2' : ''
                   }`}
                 >
-                  {/* PLAYABLE VIDEO CONTAINER */}
+                  {/* PURE LIGHT CARD IMAGE MODULE (ZERO BLACK OVERLAY) */}
                   <motion.div
-                    whileHover={{ y: -5 }}
+                    whileHover={{ y: -6 }}
                     transition={{ duration: 0.35 }}
                     onClick={() => setSelectedPodcast(podcast)}
                     className="group relative cursor-pointer"
                   >
-                    <div className="relative overflow-hidden rounded-[40px] border border-sky-100/80 bg-white/80 p-3 shadow-[0_20px_50px_rgba(186,230,253,0.15)] transition-all duration-500 group-hover:border-cyan-200 group-hover:shadow-[0_30px_60px_rgba(6,182,212,0.18)] backdrop-blur-md">
+                    <div className="relative overflow-hidden rounded-[40px] border border-sky-100 bg-white p-3 shadow-[0_15px_40px_rgba(186,230,253,0.15)] transition-all duration-500 group-hover:border-sky-300 group-hover:shadow-[0_25px_50px_rgba(14,165,233,0.18)]">
                       
-                      <div className="relative h-[240px] sm:h-[300px] md:h-[340px] overflow-hidden rounded-[30px]">
+                      <div className="relative h-[240px] sm:h-[300px] md:h-[340px] overflow-hidden rounded-[28px] bg-slate-50">
                         <img
                           src={podcast.image}
                           alt={podcast.title}
-                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                         />
 
-                        {/* TEXTURE BLUR GRADIENT OVERLAY */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-sky-950/5 to-transparent opacity-50" />
+                        {/* NO DARK MASKS — ABSOLUTE CLEAR LIGHT REFLECTION */}
+                        <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
 
-                        {/* PULSING PLAY BUTTON MIDDLE */}
+                        {/* CRISP WHITE MODAL PLAY BUTTON TRIGGER */}
                         <div className="absolute inset-0 flex items-center justify-center">
                           <div className="relative flex items-center justify-center">
-                            <div className="absolute h-20 w-20 rounded-full bg-sky-400 opacity-60 animate-ping group-hover:opacity-80"/>
-                            <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-white text-sky-600 shadow-xl transition-all duration-300 group-hover:scale-110">
-                              <Play className="ml-1 h-7 w-7 fill-current" />
+                            <div className="absolute h-20 w-20 rounded-full bg-sky-200/50 opacity-0 group-hover:opacity-100 group-hover:animate-ping transition-all duration-500" />
+                            <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-white border border-sky-100 text-sky-600 shadow-[0_8px_30px_rgba(14,165,233,0.18)] transition-transform duration-300 group-hover:scale-110">
+                              <Play className="ml-1 h-6 w-6 fill-current" />
                             </div>
                           </div>
                         </div>
 
-                        {/* TOP-RIGHT LAUNCH REDIRECT CORNER */}
+                        {/* ANCHOR ARROW CONTROL */}
                         <div className="absolute bottom-6 right-6">
-                          <div className="flex h-11 w-11 items-center justify-center rounded-full border border-white/50 bg-white/90 text-sky-600 shadow-md backdrop-blur-sm transition-all duration-300 group-hover:scale-105">
+                          <div className="flex h-11 w-11 items-center justify-center rounded-full border border-sky-100 bg-white text-sky-600 shadow-md">
                             <ArrowUpRight className="h-5 w-5 stroke-[2.5]" />
                           </div>
                         </div>
@@ -460,18 +459,17 @@ export default function Podcasts() {
                     </div>
                   </motion.div>
 
-                  {/* DATA DISCLOSURE SIDE */}
+                  {/* CONTENT COLUMN */}
                   <div className={`${isReverse ? 'lg:pr-6' : 'lg:pl-6'}`}>
                     <motion.div
-                      initial={{ opacity: 0, x: isReverse ? 25 : -25 }}
+                      initial={{ opacity: 0, x: isReverse ? 20 : -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.6, delay: 0.1 }}
                     >
-                      {/* Decorative Line Tag */}
                       <div className="mb-6 flex items-center gap-3">
-                        <div className="h-[2px] w-12 bg-gradient-to-r from-sky-500 via-cyan-400 to-transparent" />
-                        <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-sky-700 bg-sky-50 rounded-full px-3 py-1 border border-sky-100 shadow-inner">
+                        <div className="h-[2px] w-12 bg-gradient-to-r from-sky-400 to-cyan-300" />
+                        <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-sky-700 bg-sky-50 rounded-full px-3 py-1 border border-sky-100/80 shadow-inner">
                           Episode 0{index + 1}
                         </span>
                       </div>
@@ -480,15 +478,15 @@ export default function Podcasts() {
                         {podcast.title}
                       </h3>
 
-                      <p className="mt-6 text-base md:text-lg leading-relaxed text-slate-600 font-medium">
+                      <p className="mt-5 text-base md:text-lg leading-relaxed text-slate-600 font-medium">
                         {podcast.description}
                       </p>
 
-                      <div className="mt-8 flex items-center gap-3">
-                        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-sky-50 to-cyan-50 text-sky-600 border border-sky-100 shadow-sm animate-pulse">
-                          <Play className="h-3.5 w-3.5 fill-current ml-0.5" />
+                      <div className="mt-8 flex items-center gap-2.5">
+                        <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-sky-50 text-sky-600 border border-sky-100">
+                          <Play className="h-3 w-3 fill-current ml-0.5" />
                         </div>
-                        <p className="text-xs font-bold uppercase tracking-[0.15em] text-slate-500 group-hover:text-sky-700 transition-colors">
+                        <p className="text-xs font-bold uppercase tracking-[0.12em] text-slate-400">
                           Watch Interview Session
                         </p>
                       </div>
@@ -501,44 +499,44 @@ export default function Podcasts() {
         </div>
       </section>
 
-      {/* PREMIUM LIGHT POPUP IFRAME PANEL */}
+      {/* LIGHT METRICS MODAL LAYER WRAPPER */}
       <AnimatePresence>
         {selectedPodcast && (
           <div
-            className="fixed inset-0 flex items-center justify-center p-4 md:p-10"
+            className="fixed inset-0 flex items-center justify-center p-4 md:p-8"
             style={{ zIndex: 999999, isolation: 'isolate' }}
           >
-            {/* BACKDROP GRID DISMISS */}
+            {/* CLEAN BLUR GLASS BACKGROUND OVERLAY */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedPodcast(null)}
-              className="absolute inset-0 bg-slate-950/70 backdrop-blur-md"
+              className="fixed inset-0 bg-slate-900/30 backdrop-blur-md"
               style={{ zIndex: -1, pointerEvents: 'auto' }}
             />
 
-            {/* LIGHT MODAL FRAME WRAP */}
+            {/* WHITE SHEET PANEL CONTAINER */}
             <motion.div
-              initial={{ scale: 0.98, opacity: 0, y: 15 }}
+              initial={{ scale: 0.98, opacity: 0, y: 10 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.98, opacity: 0, y: 15 }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
-              className="relative w-full max-w-5xl overflow-hidden rounded-3xl border border-sky-100 bg-white p-3 shadow-2xl shadow-slate-950/20"
+              exit={{ scale: 0.98, opacity: 0, y: 10 }}
+              transition={{ duration: 0.25, ease: 'easeOut' }}
+              className="relative w-full max-w-5xl overflow-hidden rounded-[32px] border border-sky-100 bg-white p-2.5 shadow-2xl shadow-slate-200"
               style={{ zIndex: 2, pointerEvents: 'auto' }}
               onClick={(e) => e.stopPropagation()}
             >
-              {/* CLOSE ACTION CONTROL */}
+              {/* TOP ACTION ABORT BUTTON */}
               <button
                 onClick={() => setSelectedPodcast(null)}
-                className="absolute right-5 top-5 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-slate-950/80 text-white shadow-md transition-colors hover:bg-slate-950"
+                className="absolute right-5 top-5 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-slate-950/80 text-white shadow-md hover:bg-slate-950 transition-colors shadow-slate-950/30"
                 style={{ zIndex: 99 }}
               >
-                <X className="h-4.5 w-4.5" />
+                <X className="h-4 w-4" />
               </button>
 
-              {/* VIDEO ASPECT FRAME CONTAINER */}
-              <div className="aspect-video w-full relative overflow-hidden rounded-xl bg-black" style={{ pointerEvents: 'auto' }}>
+              {/* IFRAME STREAM PLAYER */}
+              <div className="aspect-video w-full relative overflow-hidden rounded-2xl bg-slate-50 shadow-inner" style={{ pointerEvents: 'auto' }}>
                 <iframe
                   src={`${selectedPodcast.videoUrl.split('?')[0]}?autoplay=1&controls=1&rel=0&modestbranding=1`}
                   title={selectedPodcast.title}

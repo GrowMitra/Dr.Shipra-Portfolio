@@ -208,8 +208,6 @@
 
 
 
-
-
 import { motion } from 'framer-motion';
 import {
   Mail,
@@ -242,17 +240,17 @@ export default function Footer() {
   };
 
   return (
-    <footer className="relative overflow-hidden border-t border-slate-100 bg-gradient-to-b from-white to-sky-50/40 text-slate-800">
+    <footer className="relative overflow-hidden border-t border-slate-100 bg-white text-slate-800">
       {/* PREMIUM SKY BLUE & LIQUID CYAN GRADIENT MESH ACCENTS */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-30 pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-60 pointer-events-none" />
       
       {/* Ambient Radial Mesh Lights */}
-      <div className="absolute left-[-10%] top-[-20%] h-[400px] w-[400px] rounded-full bg-sky-200/40 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[-20%] right-[-10%] h-[400px] w-[400px] rounded-full bg-cyan-100/50 blur-[120px] pointer-events-none" />
+      <div className="absolute left-[-10%] top-[-20%] h-[400px] w-[400px] rounded-full bg-sky-100/30 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[-20%] right-[-10%] h-[400px] w-[400px] rounded-full bg-cyan-50/40 blur-[120px] pointer-events-none" />
 
       {/* CONTAINER */}
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-20 z-10">
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-start">
+        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-start text-left">
           
           {/* LEFT SIDE: BRAND PROFILE */}
           <motion.div
@@ -262,7 +260,7 @@ export default function Footer() {
             transition={{ duration: 0.8 }}
             className="w-full"
           >
-            <div className="inline-flex items-center rounded-full border border-sky-200 bg-sky-50 px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-sky-700 shadow-sm">
+            <div className="inline-flex items-center rounded-full border border-sky-200 bg-sky-50 px-5 py-2 text-xs font-bold uppercase tracking-widest text-sky-700 shadow-sm">
               Research Portfolio
             </div>
 
@@ -282,7 +280,7 @@ export default function Footer() {
             <motion.a
               href="mailto:shipra@researchlab.com"
               whileHover={{ y: -2 }}
-              className="group mt-8 flex max-w-md items-center justify-between gap-4 rounded-2xl border border-sky-100/80 bg-white p-5 shadow-[0_12px_30px_rgba(186,230,253,0.12)] transition-all duration-300 hover:border-sky-300 hover:shadow-[0_15px_45px_rgba(6,182,212,0.15)]"
+              className="group mt-8 flex max-w-md items-center justify-between gap-4 rounded-2xl border border-sky-100 bg-white p-5 shadow-[0_12px_30px_rgba(186,230,253,0.12)] transition-all duration-300 hover:border-sky-300 hover:shadow-[0_15px_45px_rgba(14,165,233,0.18)]"
             >
               <div className="flex items-center gap-4 min-w-0">
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-sky-50 text-sky-600 border border-sky-100 shadow-inner">
@@ -311,8 +309,8 @@ export default function Footer() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="w-full"
           >
-            <div className="rounded-[36px] border border-sky-100/80 bg-white/90 p-6 md:p-8 shadow-[0_15px_40px_rgba(186,230,253,0.12)] backdrop-blur-md w-full">
-              <p className="mb-1 text-xs font-bold uppercase tracking-[0.18em] text-sky-600">
+            <div className="rounded-[40px] border border-sky-100 bg-sky-50/50 p-6 md:p-8 shadow-[0_15px_40px_rgba(186,230,253,0.1)] w-full">
+              <p className="mb-1 text-xs font-bold uppercase tracking-wider text-sky-600">
                 Quick Navigation
               </p>
               <h3 className="mb-6 text-2xl md:text-3xl font-extrabold tracking-tight text-slate-950">
@@ -334,7 +332,7 @@ export default function Footer() {
                       e.preventDefault();
                       scrollToSection(item.href);
                     }}
-                    className="group relative overflow-hidden rounded-xl border border-slate-100 bg-white px-5 py-3.5 text-sm font-bold text-slate-600 shadow-sm transition-all duration-300 hover:border-sky-200 hover:text-sky-700 hover:shadow-md w-full"
+                    className="group relative overflow-hidden rounded-xl border border-sky-100 bg-white px-5 py-3.5 text-sm font-bold text-slate-600 shadow-sm transition-all duration-300 hover:border-sky-300 hover:text-sky-700 w-full"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-sky-50 to-cyan-50 opacity-0 transition-opacity duration-300 group-hover:opacity-100 pointer-events-none" />
 

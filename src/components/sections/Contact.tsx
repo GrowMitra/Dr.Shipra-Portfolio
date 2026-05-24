@@ -486,13 +486,6 @@
 
 
 
-
-
-
-
-
-
-
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import {
@@ -542,7 +535,7 @@ export default function Contact() {
   const socialLinks = [
     { icon: <Instagram className="h-5 w-5" />, href: '#' },
     { icon: <Facebook className="h-5 w-5" />, href: '#' },
-    { icon: <span className="text-sm font-black">𝕏</span>, href: '#' },
+    { icon: <span className="text-sm font-bold">𝕏</span>, href: '#' },
     { icon: <Linkedin className="h-5 w-5" />, href: '#' },
     { icon: <Youtube className="h-5 w-5" />, href: '#' },
   ];
@@ -550,27 +543,27 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden bg-gradient-to-b from-white via-sky-50/60 to-white py-24 md:py-32 text-slate-800 border-t border-slate-100"
+      className="relative overflow-hidden bg-white py-24 md:py-32 text-slate-800 border-t border-slate-100"
     >
-      {/* PREMIUM SKY BLUE & LIQUID CYAN GRADIENT MESH ACCENTS */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-40" />
+      {/* PREMIUM SKY BLUE LIGHT MESH PATTERN */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-60 pointer-events-none" />
       
-      {/* Glowing Mesh Spheres */}
-      <div className="absolute left-[-100px] top-[10%] h-[500px] w-[500px] rounded-full bg-sky-200/40 blur-[130px] pointer-events-none" />
-      <div className="absolute bottom-[-100px] right-[-100px] h-[500px] w-[500px] rounded-full bg-cyan-100/50 blur-[140px] pointer-events-none" />
+      {/* Soft Ambient Fluid Aura Spheres */}
+      <div className="absolute left-[-100px] top-[10%] h-[500px] w-[500px] rounded-full bg-sky-100/40 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[-100px] right-[-100px] h-[500px] w-[500px] rounded-full bg-cyan-50/40 blur-[120px] pointer-events-none" />
 
       {/* CONTAINER */}
       <div ref={containerRef} className="relative mx-auto max-w-7xl px-4 sm:px-6 z-10">
         
         {/* HEADER */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
           className="mx-auto mb-20 max-w-4xl text-center"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50/80 px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-sky-700 shadow-sm backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-sky-50 px-5 py-2 text-xs font-bold uppercase tracking-widest text-sky-700 shadow-sm">
             Contact & Collaboration
           </div>
 
@@ -582,7 +575,7 @@ export default function Contact() {
             </span>
           </h2>
 
-          <p className="mx-auto mt-6 max-w-2xl text-base md:text-lg leading-relaxed text-slate-600 font-medium">
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 font-medium">
             New to startups? No matter where you’re from, step into the spotlight and show the world what you do!
           </p>
         </motion.div>
@@ -590,20 +583,18 @@ export default function Contact() {
         {/* RESPONSIVE LAYOUT GRID */}
         <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] w-full items-start">
           
-          {/* FORM PANEL */}
+          {/* FORM PANEL — SKY BLUE MATTE CONTAINER */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="relative overflow-hidden rounded-[36px] border border-sky-100/80 bg-white/90 p-6 md:p-10 shadow-[0_15px_40px_rgba(186,230,253,0.12)] backdrop-blur-md w-full"
+            className="relative overflow-hidden rounded-[40px] border border-sky-100 bg-sky-50/40 p-6 md:p-10 shadow-[0_15px_40px_rgba(186,230,253,0.12)] w-full"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-sky-500/5 via-transparent to-cyan-500/5 pointer-events-none" />
-
             <div className="relative z-10 w-full">
-              <div className="mb-10 flex items-center justify-between gap-4">
+              <div className="mb-10 flex items-center justify-between gap-4 text-left">
                 <div>
-                  <p className="mb-1.5 text-xs font-bold uppercase tracking-[0.18em] text-sky-600">
+                  <p className="mb-1 text-xs font-bold uppercase tracking-wider text-sky-600">
                     Contact Form
                   </p>
                   <h3 className="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-950">
@@ -611,7 +602,7 @@ export default function Contact() {
                   </h3>
                 </div>
 
-                <div className="hidden sm:flex h-12 w-12 items-center justify-center rounded-xl bg-sky-50 text-sky-600 border border-sky-100 shadow-sm">
+                <div className="hidden sm:flex h-12 w-12 items-center justify-center rounded-xl bg-white text-sky-600 border border-sky-100 shadow-sm">
                   <Send className="h-5 w-5" />
                 </div>
               </div>
@@ -624,9 +615,9 @@ export default function Contact() {
                     { label: 'Full Name', name: 'name', type: 'text' },
                     { label: 'Email Address', name: 'email', type: 'email' },
                   ].map((field) => (
-                    <div key={field.name} className="relative w-full">
+                    <div key={field.name} className="relative w-full text-left">
                       <label
-                        className={`absolute left-5 z-10 transition-all duration-300 pointer-events-none font-semibold ${
+                        className={`absolute left-5 z-10 transition-all duration-300 pointer-events-none font-bold ${
                           focusedField === field.name || formState[field.name as keyof typeof formState]
                             ? 'top-2 text-[10px] uppercase tracking-wider text-sky-600'
                             : 'top-1/2 -translate-y-1/2 text-sm text-slate-400'
@@ -643,16 +634,16 @@ export default function Contact() {
                         onFocus={() => setFocusedField(field.name)}
                         onBlur={() => setFocusedField(null)}
                         required
-                        className="h-16 w-full rounded-2xl border border-slate-200 bg-white px-5 pt-4 text-sm font-medium text-slate-900 outline-none transition-all duration-300 focus:border-sky-400 focus:bg-white focus:shadow-[0_8px_20px_rgba(14,165,233,0.06)]"
+                        className="h-16 w-full rounded-2xl border border-sky-100 bg-white px-5 pt-4 text-sm font-bold text-slate-800 outline-none transition-all duration-300 focus:border-sky-400 focus:shadow-[0_4px_20px_rgba(14,165,233,0.05)]"
                       />
                     </div>
                   ))}
                 </div>
 
                 {/* INQUIRY SELECTION */}
-                <div className="relative w-full">
+                <div className="relative w-full text-left">
                   <label
-                    className={`absolute left-5 z-10 transition-all duration-300 pointer-events-none font-semibold ${
+                    className={`absolute left-5 z-10 transition-all duration-300 pointer-events-none font-bold ${
                       focusedField === 'subject' || formState.subject
                         ? 'top-2 text-[10px] uppercase tracking-wider text-sky-600'
                         : 'top-1/2 -translate-y-1/2 text-sm text-slate-400'
@@ -668,7 +659,7 @@ export default function Contact() {
                     onFocus={() => setFocusedField('subject')}
                     onBlur={() => setFocusedField(null)}
                     required
-                    className="h-16 w-full cursor-pointer appearance-none rounded-2xl border border-slate-200 bg-white px-5 pt-4 text-sm font-medium text-slate-900 outline-none transition-all duration-300 focus:border-sky-400 focus:bg-white"
+                    className="h-16 w-full cursor-pointer appearance-none rounded-2xl border border-sky-100 bg-white px-5 pt-4 text-sm font-bold text-slate-800 outline-none transition-all duration-300 focus:border-sky-400"
                   >
                     <option value="" disabled />
                     <option value="research">Research Collaboration</option>
@@ -676,15 +667,15 @@ export default function Contact() {
                     <option value="speaking">Speaking Engagement</option>
                     <option value="media">Media & Press Inquiry</option>
                   </select>
-                  <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none border-l border-slate-200 pl-3 text-slate-400 text-xs font-bold">
+                  <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none border-l border-sky-100 pl-3 text-sky-600 text-xs font-black">
                     ▼
                   </div>
                 </div>
 
                 {/* TEXTAREA MESSAGE */}
-                <div className="relative w-full">
+                <div className="relative w-full text-left">
                   <label
-                    className={`absolute left-5 z-10 transition-all duration-300 pointer-events-none font-semibold ${
+                    className={`absolute left-5 z-10 transition-all duration-300 pointer-events-none font-bold ${
                       focusedField === 'message' || formState.message
                         ? 'top-3 text-[10px] uppercase tracking-wider text-sky-600'
                         : 'top-5 text-sm text-slate-400'
@@ -701,7 +692,7 @@ export default function Contact() {
                     onFocus={() => setFocusedField('message')}
                     onBlur={() => setFocusedField(null)}
                     required
-                    className="w-full resize-none rounded-2xl border border-slate-200 bg-white px-5 py-6 pt-8 text-sm font-medium text-slate-900 outline-none transition-all duration-300 focus:border-sky-400 focus:bg-white focus:shadow-[0_8px_20px_rgba(14,165,233,0.06)]"
+                    className="w-full resize-none rounded-2xl border border-sky-100 bg-white px-5 py-6 pt-8 text-sm font-bold text-slate-800 outline-none transition-all duration-300 focus:border-sky-400 focus:shadow-[0_4px_20px_rgba(14,165,233,0.05)]"
                   />
                 </div>
 
@@ -709,14 +700,14 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="group relative flex h-16 w-full items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-r from-sky-500 to-cyan-500 font-bold uppercase tracking-wider text-white transition-all duration-300 hover:shadow-[0_12px_30px_rgba(14,165,233,0.25)] disabled:opacity-70"
+                  className="group relative flex h-16 w-full items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-r from-sky-500 to-cyan-500 font-bold uppercase tracking-wider text-white transition-all duration-300 hover:shadow-[0_12px_30px_rgba(14,165,233,0.2)] disabled:opacity-70"
                 >
                   <span className="absolute inset-0 bg-white/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
                   {isSubmitting ? (
                     <div className="relative z-10 h-5 w-5 animate-spin rounded-full border-2 border-white/20 border-t-white" />
                   ) : (
-                    <div className="relative z-10 flex items-center gap-2.5 text-xs tracking-[0.15em]">
+                    <div className="relative z-10 flex items-center gap-2 text-xs tracking-widest font-black">
                       Send Message
                       <Send className="h-4 w-4 stroke-[2.5] transition-transform duration-300 group-hover:translate-x-0.5" />
                     </div>
@@ -727,7 +718,7 @@ export default function Contact() {
                   <motion.p
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-center text-sm font-semibold text-emerald-600"
+                    className="text-center text-sm font-bold text-emerald-600"
                   >
                     Your message has been sent successfully.
                   </motion.p>
@@ -742,12 +733,12 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="flex flex-col gap-6 w-full"
+            className="flex flex-col gap-6 w-full text-left"
           >
             {/* DIRECT CONNECTIONS */}
-            <div className="rounded-[36px] border border-sky-100/80 bg-white/90 p-6 md:p-8 shadow-[0_15px_40px_rgba(186,230,253,0.12)] backdrop-blur-md w-full">
+            <div className="rounded-[40px] border border-sky-100 bg-white p-6 md:p-8 shadow-[0_15px_40px_rgba(186,230,253,0.12)] w-full">
               <div className="mb-8">
-                <p className="mb-1.5 text-xs font-bold uppercase tracking-[0.18em] text-sky-600">
+                <p className="mb-1 text-xs font-bold uppercase tracking-wider text-sky-600">
                   Direct Contact
                 </p>
                 <h3 className="text-2xl md:text-3xl font-extrabold tracking-tight text-slate-950">
@@ -783,7 +774,7 @@ export default function Contact() {
                     key={index}
                     href={item.href}
                     whileHover={{ y: -2 }}
-                    className="group flex items-center gap-4 rounded-2xl border border-slate-100 bg-white p-4 shadow-sm transition-all duration-300 hover:border-sky-200 hover:shadow-md"
+                    className="group flex items-center gap-4 rounded-2xl border border-sky-50 bg-white p-4 transition-all duration-300 hover:border-sky-200 hover:shadow-sm"
                   >
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-sky-50 text-sky-600 border border-sky-100 shadow-inner">
                       {item.icon}
@@ -796,23 +787,23 @@ export default function Contact() {
                       <p className="mt-0.5 text-sm font-bold text-slate-900 truncate">
                         {item.value}
                       </p>
-                      <p className="text-xs text-slate-400 font-medium truncate">
+                      <p className="text-xs text-slate-400 font-semibold truncate">
                         {item.sub}
                       </p>
                     </div>
 
-                    <ArrowUpRight className="h-4 w-4 shrink-0 text-slate-300 transition-colors duration-300 group-hover:text-sky-500 stroke-[2.5]" />
+                    <ArrowUpRight className="h-4 w-4 shrink-0 text-sky-300 transition-colors duration-300 group-hover:text-sky-500 stroke-[2.5]" />
                   </motion.a>
                 ))}
               </div>
             </div>
 
             {/* SOCIAL REACH CHANNELS */}
-            <div className="relative overflow-hidden rounded-[36px] border border-sky-100/80 bg-gradient-to-br from-sky-50/50 to-cyan-50/40 p-6 md:p-8 shadow-[0_15px_40px_rgba(186,230,253,0.1)] backdrop-blur-md w-full">
+            <div className="relative overflow-hidden rounded-[40px] border border-sky-100 bg-sky-50/50 p-6 md:p-8 shadow-[0_15px_40px_rgba(186,230,253,0.1)] w-full">
               <div className="absolute right-[-40px] top-[-40px] h-40 w-40 rounded-full bg-sky-200/20 blur-3xl pointer-events-none" />
 
               <div className="relative z-10 w-full">
-                <p className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-sky-700">
+                <p className="mb-4 text-xs font-bold uppercase tracking-wider text-sky-700">
                   Social Presence
                 </p>
 
@@ -823,7 +814,7 @@ export default function Contact() {
                       href={social.href}
                       whileHover={{ y: -3, scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="group flex h-12 w-12 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-400 shadow-sm transition-all duration-300 hover:border-sky-300 hover:text-sky-600 hover:shadow-md"
+                      className="group flex h-12 w-12 items-center justify-center rounded-xl border border-sky-100 bg-white text-slate-400 shadow-sm transition-all duration-300 hover:border-sky-300 hover:text-sky-600 shadow-inner"
                     >
                       {social.icon}
                     </motion.a>

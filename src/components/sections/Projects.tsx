@@ -437,6 +437,7 @@
 
 
 
+
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, ArrowUpRight } from 'lucide-react';
@@ -573,31 +574,30 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative overflow-hidden bg-gradient-to-b from-white via-sky-50/60 to-white py-32 text-slate-800 border-t border-slate-100"
+      className="relative overflow-hidden bg-white py-32 text-slate-800 border-t border-slate-100"
     >
-      {/* PREMIUM SKY BLUE & LIQUID CYAN GRADIENT MESH ACCENTS */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-40" />
+      {/* PURE LIGHT MATRIX MESH BACKGROUND */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-60 pointer-events-none" />
       
-      {/* Dynamic Mesh Orbs for Ambient Glow */}
-      <div className="absolute right-[-100px] top-[10%] h-[600px] w-[600px] rounded-full bg-sky-200/40 blur-[130px]" />
-      <div className="absolute left-[-150px] bottom-[10%] h-[600px] w-[600px] rounded-full bg-cyan-100/50 blur-[140px]" />
+      {/* Ambient Soft Sky Blue Aura Blurs */}
+      <div className="absolute right-[-100px] top-[10%] h-[600px] w-[600px] rounded-full bg-sky-100/40 blur-[120px] pointer-events-none" />
+      <div className="absolute left-[-150px] bottom-[10%] h-[600px] w-[600px] rounded-full bg-cyan-50/50 blur-[120px] pointer-events-none" />
 
-      {/* CONTAINER */}
       <div ref={containerRef} className="relative mx-auto max-w-7xl px-6 z-10">
         
         {/* HEADER */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
           className="mx-auto mb-20 max-w-4xl text-center"
         >
-          <div className="inline-flex items-center rounded-full border border-sky-200 bg-sky-50/80 px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-sky-700 shadow-sm backdrop-blur-sm">
+          <div className="inline-flex items-center rounded-full border border-sky-200 bg-sky-50 px-5 py-2 text-xs font-bold uppercase tracking-widest text-sky-700 shadow-sm">
             Research Projects
           </div>
 
-          <h2 className="mt-6 text-4xl font-extrabold leading-tight tracking-tight text-slate-950 md:text-6xl lg:text-7xl">
+          <h2 className="mt-6 text-4xl font-extrabold tracking-tight text-slate-950 md:text-6xl lg:text-7xl">
             Selected
             <span className="bg-gradient-to-r from-sky-600 via-cyan-600 to-blue-600 bg-clip-text text-transparent">
               {' '}
@@ -610,7 +610,7 @@ export default function Projects() {
           </p>
         </motion.div>
 
-        {/* FILTER BUTTONS (Premium Light Mode) */}
+        {/* FILTER BUTTONS (Translucent Sky Pill Style) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -627,8 +627,8 @@ export default function Projects() {
               }}
               className={`rounded-2xl border px-6 py-3 text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-sm ${
                 activeCategory === category
-                  ? 'border-sky-300 bg-gradient-to-r from-sky-500 to-cyan-500 text-white shadow-[0_10px_25px_rgba(14,165,233,0.25)]'
-                  : 'border-slate-200 bg-white/80 text-slate-500 hover:border-sky-300 hover:bg-sky-50/50 hover:text-sky-700 backdrop-blur-sm'
+                  ? 'border-sky-300 bg-gradient-to-r from-sky-500 to-cyan-500 text-white shadow-[0_10px_25px_rgba(14,165,233,0.2)]'
+                  : 'border-slate-200 bg-white text-slate-500 hover:border-sky-300 hover:bg-sky-50/50 hover:text-sky-700'
               }`}
             >
               {category}
@@ -646,35 +646,35 @@ export default function Projects() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.05 }}
               whileHover={{ y: -6 }}
-              className="group relative overflow-hidden rounded-[36px] border border-sky-100/80 bg-white/90 p-2.5 shadow-[0_15px_40px_rgba(186,230,253,0.12)] transition-all duration-500 hover:border-cyan-200 hover:shadow-[0_25px_60px_rgba(6,182,212,0.15)] backdrop-blur-md"
+              className="group relative overflow-hidden rounded-[40px] border border-sky-100 bg-white p-3 shadow-[0_15px_40px_rgba(186,230,253,0.15)] transition-all duration-500 hover:border-sky-300 hover:shadow-[0_25px_50px_rgba(14,165,233,0.18)]"
             >
-              {/* IMAGE CONTAINER */}
-              <div className="relative aspect-[16/10] overflow-hidden rounded-[28px]">
+              {/* IMAGE CONTAINER — 100% CLEAR VISIBILITY */}
+              <div className="relative aspect-[16/10] overflow-hidden rounded-[28px] bg-slate-50">
                 <img
                   src={project.thumbnail}
                   alt={project.title}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                   loading="lazy"
                 />
 
-                {/* LIGHT SKIES UNDER OVERLAY */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-sky-950/5 to-transparent opacity-40" />
+                {/* NO BLACK/SLATE TINT GRADIENT COATINGS AT ALL */}
+                <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
 
-                {/* CATEGORY TAG */}
-                <div className="absolute left-5 top-5">
-                  <span className="rounded-full border border-white/40 bg-white/90 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.15em] text-sky-800 shadow-sm backdrop-blur-sm">
+                {/* CATEGORY TAG CONTAINER */}
+                <div className="absolute left-4 top-4 z-10">
+                  <span className="rounded-full border border-sky-100 bg-white/95 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-sky-800 shadow-md backdrop-blur-sm">
                     {project.category}
                   </span>
                 </div>
               </div>
 
-              {/* CONTENT SIDE */}
-              <div className="p-6">
-                <p className="mb-2 text-xs font-bold uppercase tracking-[0.15em] text-slate-400">
+              {/* CONTENT SIDE — PREMIUM SKY BLUE FLOATING BASE BOX */}
+              <div className="mt-4 p-5 rounded-[28px] bg-sky-50/90 border border-sky-100/40 transition-colors group-hover:bg-white text-left">
+                <p className="mb-1 text-[10px] font-bold uppercase tracking-wider text-slate-400">
                   Project Dataset — {project.year}
                 </p>
 
-                <h3 className="line-clamp-2 text-xl font-extrabold leading-snug text-slate-950 transition-colors duration-300 group-hover:text-sky-600">
+                <h3 className="line-clamp-2 text-xl font-extrabold leading-snug text-slate-900 transition-colors duration-300 group-hover:text-sky-600">
                   {project.title}
                 </h3>
 
@@ -683,11 +683,11 @@ export default function Projects() {
                 </p>
 
                 {/* METHODOLOGIES TAGS */}
-                <div className="mt-5 flex flex-wrap gap-2">
+                <div className="mt-5 flex flex-wrap gap-1.5">
                   {project.methodologies.slice(0, 2).map((method) => (
                     <span
                       key={method}
-                      className="rounded-xl border border-sky-100/60 bg-sky-50/50 px-3 py-1 text-xs font-semibold text-sky-700"
+                      className="rounded-lg bg-white px-2.5 py-1 text-xs font-bold text-sky-700 border border-sky-100"
                     >
                       {method}
                     </span>
@@ -695,35 +695,31 @@ export default function Projects() {
                 </div>
 
                 {/* FOOTER ACTION PANEL */}
-                <div className="mt-6 flex items-center justify-between border-t border-slate-100 pt-5">
+                <div className="mt-6 flex items-center justify-between border-t border-slate-200/60 pt-5">
                   <a
                     href={project.publicationLink}
-                    className="group/link inline-flex items-center gap-2 text-sm font-bold text-sky-600 transition-all duration-300 hover:gap-3 hover:text-cyan-600"
+                    className="group/link inline-flex items-center gap-1.5 text-sm font-bold text-sky-600 transition-all duration-300 hover:text-cyan-600"
                   >
                     View Project
-                    <ExternalLink className="h-4 w-4 stroke-[2.5] transition-transform duration-300 group-hover/link:translate-x-0.5" />
+                    <ExternalLink className="h-3.5 w-3.5 stroke-[2.5]" />
                   </a>
 
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-100 bg-slate-50 text-slate-400 transition-all duration-300 group-hover:border-sky-200 group-hover:bg-sky-50 group-hover:text-sky-600 shadow-inner">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-sky-100 bg-white text-sky-600 shadow-sm transition-transform group-hover:scale-105">
                     <ArrowUpRight className="h-4 w-4 stroke-[2.5]" />
                   </div>
                 </div>
               </div>
 
-              {/* FLOATING SPHERE GLOW OVER CARD */}
-              <div className="absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none">
-                <div className="absolute -top-20 right-0 h-40 w-40 rounded-full bg-cyan-100/40 blur-3xl" />
-              </div>
             </motion.div>
           ))}
         </div>
 
-        {/* VIEW MORE / LOAD TOGGLE BUTTON */}
+        {/* VIEW MORE BUTTON */}
         {filteredProjects.length > 6 && (
           <div className="mt-16 flex justify-center">
             <button
               onClick={() => setShowAllProjects(!showAllProjects)}
-              className="group relative flex items-center gap-3 overflow-hidden rounded-full border border-sky-200 bg-white px-8 py-4 shadow-[0_12px_30px_rgba(186,230,253,0.25)] transition-all duration-300 hover:border-sky-400 hover:shadow-[0_15px_40px_rgba(14,165,233,0.15)] hover:-translate-y-0.5"
+              className="group relative flex items-center gap-2.5 overflow-hidden rounded-full border border-sky-200 bg-white px-8 py-4 shadow-[0_12px_30px_rgba(186,230,253,0.25)] transition-all duration-300 hover:border-sky-400 hover:shadow-[0_15px_40px_rgba(14,165,233,0.15)] hover:-translate-y-0.5"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-sky-50 to-cyan-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className="text-xs font-bold uppercase tracking-[0.2em] text-slate-800 group-hover:text-sky-800 transition-colors relative z-10">
