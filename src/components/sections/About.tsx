@@ -1,5 +1,1153 @@
 
 
+// import { useRef, useEffect, useState } from 'react';
+// import {
+//   motion,
+//   useInView,
+//   useSpring,
+//   useTransform,
+//   AnimatePresence,
+// } from 'framer-motion';
+
+// import {
+//   Award,
+//   BookOpen,
+//   Microscope,
+//   Users,
+//   Calendar,
+//   Play,
+//   X,
+// } from 'lucide-react';
+
+// import aboutImg from '../images/heroImg/aboutImg.jpg';
+
+// /* =========================================
+//    STATS
+// ========================================= */
+
+// const stats = [
+//   { label: 'Publications', value: 98, suffix: '+', icon: 'BookOpen' },
+//   { label: 'Citations', value: 1200, suffix: '+', icon: 'Award' },
+//   { label: 'Years Experience', value:5, suffix: '+', icon: 'Calendar' },
+//   { label: 'PhD Students', value: 5, suffix: '', icon: 'Users' },
+// ];
+
+// /* =========================================
+//    TIMELINE
+// ========================================= */
+
+// const timeline = [
+//   {
+//     year: 1999,
+//     title: 'PhD in Molecular Biology',
+//     description: 'MIT — Specialized in genetic engineering',
+//   },
+//   {
+//     year: 2003,
+//     title: 'Postdoctoral Fellow',
+//     description: 'Stanford University — CRISPR research',
+//   },
+//   {
+//     year: 2007,
+//     title: 'Assistant Professor',
+//     description: 'Harvard Medical School',
+//   },
+//   {
+//     year: 2012,
+//     title: 'Associate Professor',
+//     description: 'Promoted with tenure',
+//   },
+//   {
+//     year: 2018,
+//     title: 'Full Professor',
+//     description: 'Department Chair of Molecular Biology',
+//   },
+//   {
+//     year: 2020,
+//     title: 'Nobel Prize Nomination',
+//     description: 'For contributions to CRISPR technology',
+//   },
+//   {
+//     year: 2023,
+//     title: 'Director of Research',
+//     description: 'MIT Institute for Medical Engineering',
+//   },
+// ];
+
+// /* =========================================
+//    STORYTELLING MEDIA
+// ========================================= */
+
+// const storytellingMedia = [
+//   {
+//     type: 'video',
+//     thumbnail:
+//       'https://images.unsplash.com/photo-1532187643603-ba119ca4109e?q=80&w=1600&auto=format&fit=crop',
+
+//     youtube:
+//       'https://www.youtube.com/embed/_1wSKuoAzUw?autoplay=1',
+//   },
+
+//   {
+//     type: 'video',
+//     thumbnail:
+//       'https://plus.unsplash.com/premium_photo-1664195074951-fe91ec456eed?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cG9kY2FzdCUyMHRodW1uYWlufGVufDB8fDB8fHww',
+
+//     youtube:
+//       'https://www.youtube.com/embed/uT5a1oYCPng?autoplay=1',
+//   },
+
+//   {
+//     type: 'image',
+//     image:
+//       'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop',
+//   },
+
+//   {
+//     type: 'image',
+//     image:
+//       'https://plus.unsplash.com/premium_photo-1733342533441-c4309b51da17?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8YnJhaW4lMjBuZXJ2b3N8ZW58MHx8MHx8fDA%3D',
+//   },
+// ];
+
+// /* =========================================
+//    ANIMATED COUNTER
+// ========================================= */
+
+// function AnimatedCounter({
+//   value,
+//   suffix,
+// }: {
+//   value: number;
+//   suffix?: string;
+// }) {
+//   const ref = useRef<HTMLSpanElement>(null);
+
+//   const isInView = useInView(ref, {
+//     once: true,
+//   });
+
+//   const spring = useSpring(0, {
+//     mass: 0.8,
+//     stiffness: 50,
+//     damping: 15,
+//   });
+
+//   const display = useTransform(spring, (current) =>
+//     Math.round(current)
+//   );
+
+//   useEffect(() => {
+//     if (isInView) {
+//       spring.set(value);
+//     }
+//   }, [isInView, spring, value]);
+
+//   return (
+//     <span ref={ref} className="tabular-nums">
+//       <motion.span>{display}</motion.span>
+//       {suffix}
+//     </span>
+//   );
+// }
+
+// /* =========================================
+//    MAIN COMPONENT
+// ========================================= */
+
+// export default function About() {
+//   const containerRef = useRef<HTMLDivElement>(null);
+
+//   const [selectedMedia, setSelectedMedia] = useState<any>(null);
+
+//   /* ESC CLOSE */
+
+//   useEffect(() => {
+//     const handleKeyDown = (e: KeyboardEvent) => {
+//       if (e.key === 'Escape') {
+//         setSelectedMedia(null);
+//       }
+//     };
+
+//     window.addEventListener('keydown', handleKeyDown);
+
+//     return () =>
+//       window.removeEventListener('keydown', handleKeyDown);
+//   }, []);
+
+//   return (
+//     <>
+//       <section
+//         id="about"
+//         className="relative overflow-hidden bg-[#050816] py-32"
+//       >
+//         {/* BACKGROUND */}
+
+//         <div className="absolute inset-0 scientific-grid opacity-20" />
+
+//         <div className="absolute top-[-250px] right-[-150px] h-[500px] w-[500px] rounded-full bg-cyan-500/10 blur-[140px]" />
+
+//         <div className="absolute bottom-[-250px] left-[-150px] h-[500px] w-[500px] rounded-full bg-blue-500/10 blur-[140px]" />
+
+//         {/* CONTAINER */}
+
+//         <div
+//           ref={containerRef}
+//           className="relative mx-auto max-w-7xl px-6"
+//         >
+//           {/* HEADER */}
+
+//           <motion.div
+//             initial={{ opacity: 0, y: 40 }}
+//             whileInView={{ opacity: 1, y: 0 }}
+//             viewport={{ once: true }}
+//             transition={{ duration: 0.8 }}
+//             className="mb-24 text-center"
+//           >
+//             <span className="inline-flex items-center rounded-full border border-cyan-400/20 bg-white/5 px-5 py-2 text-sm uppercase tracking-[0.25em] text-cyan-300 backdrop-blur-md">
+//               About Researcher
+//             </span>
+
+//             <h2 className="mt-8 text-5xl font-bold leading-tight tracking-tight text-white md:text-7xl">
+//               Pioneering the Future of
+//               <br />
+
+//               <span className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
+//                 Molecular Science
+//               </span>
+//             </h2>
+
+//             <p className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-zinc-400">
+//               Dedicated to advancing molecular biology through
+//               precision research, innovation, and scientific
+//               mentorship across global institutions.
+//             </p>
+//           </motion.div>
+
+//           {/* MAIN SECTION */}
+
+//           <div className="mb-28 grid items-center gap-20 lg:grid-cols-2">
+//             {/* IMAGE */}
+
+//             <motion.div
+//               initial={{ opacity: 0, x: -60 }}
+//               whileInView={{ opacity: 1, x: 0 }}
+//               viewport={{ once: true }}
+//               transition={{ duration: 1 }}
+//               className="relative"
+//             >
+//               <div className="relative aspect-[4/5] overflow-hidden rounded-[32px] border border-white/10 bg-white/5 shadow-[0_0_80px_rgba(0,255,255,0.08)] backdrop-blur-2xl">
+//                 <img
+//                   src={aboutImg}
+//                   alt="Scientist portrait"
+//                   className="absolute inset-0 h-full w-full object-cover"
+//                 />
+
+//                 <div className="absolute inset-0 bg-gradient-to-t from-[#050816] via-[#050816]/20 to-transparent" />
+
+//                 <div className="absolute left-6 top-6 rounded-full border border-white/10 bg-black/40 px-4 py-2 backdrop-blur-xl">
+//                   <p className="text-[11px] uppercase tracking-[0.3em] text-cyan-300">
+//                     Lead Scientist
+//                   </p>
+//                 </div>
+
+//                 <div className="absolute bottom-6 left-6 right-6">
+//                   <div className="rounded-3xl border border-white/10 bg-black/30 p-6 backdrop-blur-2xl">
+//                     <p className="text-sm uppercase tracking-[0.28em] text-cyan-300">
+//                       Neuroscientist
+//                     </p>
+
+//                     <h3 className="mt-3 text-3xl font-semibold text-white">
+//                       Shipra Goswami
+//                     </h3>
+//                   </div>
+//                 </div>
+//               </div>
+//             </motion.div>
+
+//             {/* CONTENT */}
+
+//             <div className="space-y-10">
+//               <motion.div
+//                 initial={{ opacity: 0, y: 40 }}
+//                 whileInView={{ opacity: 1, y: 0 }}
+//                 viewport={{ once: true }}
+//                 transition={{ duration: 0.7 }}
+//               >
+//                 <h3 className="mb-8 text-4xl font-bold text-white">
+//                   Biography
+//                 </h3>
+
+//                 <div className="space-y-6 text-lg leading-relaxed text-zinc-400">
+//                   <p>
+//                     Dr. Shipra is a globally recognized
+//                     molecular biologist whose groundbreaking
+//                     research in CRISPR-based therapies has
+//                     transformed the future of genetic medicine.
+//                   </p>
+
+//                   <p>
+//                     With more than 150 peer-reviewed
+//                     publications and 12,000+ citations, her
+//                     work continues to influence modern
+//                     molecular diagnostics and precision
+//                     therapeutics worldwide.
+//                   </p>
+
+//                   <p>
+//                     Her laboratory develops advanced
+//                     gene-editing technologies focused on
+//                     cancer treatment, rare genetic disorders,
+//                     and next-generation therapeutic systems.
+//                   </p>
+//                 </div>
+//               </motion.div>
+
+//               {/* INFO CARDS */}
+
+//               <motion.div
+//                 initial={{ opacity: 0, y: 40 }}
+//                 whileInView={{ opacity: 1, y: 0 }}
+//                 viewport={{ once: true }}
+//                 transition={{ delay: 0.2 }}
+//                 className="grid grid-cols-2 gap-5"
+//               >
+//                 {[
+//                   ['Research Focus', 'Gene Editing'],
+//                   ['Specialization', 'CRISPR Technology'],
+//                   ['Institution', 'MIT Research'],
+//                   ['Department', 'Molecular Biology'],
+//                 ].map((item, index) => (
+//                   <div
+//                     key={index}
+//                     className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-xl transition-all duration-300 hover:border-cyan-400/30"
+//                   >
+//                     <p className="mb-2 text-xs uppercase tracking-[0.22em] text-zinc-500">
+//                       {item[0]}
+//                     </p>
+
+//                     <p className="font-medium text-white">
+//                       {item[1]}
+//                     </p>
+//                   </div>
+//                 ))}
+//               </motion.div>
+//             </div>
+//           </div>
+
+//           {/* STATS */}
+
+//           <motion.div
+//             initial={{ opacity: 0, y: 40 }}
+//             whileInView={{ opacity: 1, y: 0 }}
+//             viewport={{ once: true }}
+//             transition={{ duration: 0.7 }}
+//             className="mb-28 grid grid-cols-2 gap-6 md:grid-cols-4"
+//           >
+//             {stats.map((stat, index) => (
+//               <motion.div
+//                 key={stat.label}
+//                 initial={{ opacity: 0, y: 20 }}
+//                 whileInView={{ opacity: 1, y: 0 }}
+//                 transition={{ delay: index * 0.1 }}
+//                 className="rounded-3xl border border-white/10 bg-white/[0.03] p-8 text-center backdrop-blur-2xl transition-all duration-300 hover:border-cyan-400/20"
+//               >
+//                 <div className="mb-5 flex justify-center">
+//                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-cyan-400/10 text-cyan-300">
+//                     {stat.icon === 'BookOpen' && (
+//                       <BookOpen className="h-6 w-6" />
+//                     )}
+
+//                     {stat.icon === 'Award' && (
+//                       <Award className="h-6 w-6" />
+//                     )}
+
+//                     {stat.icon === 'Calendar' && (
+//                       <Calendar className="h-6 w-6" />
+//                     )}
+
+//                     {stat.icon === 'Users' && (
+//                       <Users className="h-6 w-6" />
+//                     )}
+//                   </div>
+//                 </div>
+
+//                 <div className="mb-3 text-5xl font-bold text-white">
+//                   <AnimatedCounter
+//                     value={stat.value}
+//                     suffix={stat.suffix}
+//                   />
+//                 </div>
+
+//                 <p className="text-sm uppercase tracking-[0.18em] text-zinc-500">
+//                   {stat.label}
+//                 </p>
+//               </motion.div>
+//             ))}
+//           </motion.div>
+
+//           {/* TIMELINE + STORYTELLING */}
+
+//           <div className="grid gap-16 lg:grid-cols-2">
+//             {/* TIMELINE */}
+
+//             <motion.div
+//               initial={{ opacity: 0, x: -40 }}
+//               whileInView={{ opacity: 1, x: 0 }}
+//               viewport={{ once: true }}
+//             >
+//               <h3 className="mb-10 text-3xl font-bold text-white">
+//                 Career Timeline
+//               </h3>
+
+//               <div className="relative border-l border-white/10 pl-8">
+//                 {timeline.map((item, index) => (
+//                   <motion.div
+//                     key={index}
+//                     initial={{ opacity: 0, x: -20 }}
+//                     whileInView={{ opacity: 1, x: 0 }}
+//                     transition={{ delay: index * 0.1 }}
+//                     className="relative pb-10"
+//                   >
+//                     <div className="absolute -left-[38px] top-2 h-4 w-4 rounded-full bg-cyan-300 shadow-[0_0_25px_rgba(0,255,255,0.8)]" />
+
+//                     <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl">
+//                       <span className="text-sm font-semibold text-cyan-300">
+//                         {item.year}
+//                       </span>
+
+//                       <h4 className="mt-2 text-xl font-semibold text-white">
+//                         {item.title}
+//                       </h4>
+
+//                       <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+//                         {item.description}
+//                       </p>
+//                     </div>
+//                   </motion.div>
+//                 ))}
+//               </div>
+//             </motion.div>
+
+//             {/* STORYTELLING */}
+
+//             <motion.div
+//               initial={{ opacity: 0, x: 40 }}
+//               whileInView={{ opacity: 1, x: 0 }}
+//               viewport={{ once: true }}
+//             >
+//               <div className="mb-10">
+//                 <h3 className="text-3xl font-bold text-white">
+//                   Storytelling Gallery
+//                 </h3>
+//               </div>
+
+//               {/* VIDEO BANNERS */}
+
+//               <div className="space-y-6">
+//                 {storytellingMedia
+//                   .filter((item) => item.type === 'video')
+//                   .map((item, index) => (
+//                     <motion.div
+//                       key={index}
+//                       initial={{ opacity: 0, y: 30 }}
+//                       whileInView={{ opacity: 1, y: 0 }}
+//                       transition={{ delay: index * 0.1 }}
+//                       whileHover={{ y: -5 }}
+//                       onClick={() => setSelectedMedia(item)}
+//                       className="group relative cursor-pointer overflow-hidden rounded-[30px] border border-white/10"
+//                     >
+//                       <div className="relative h-[240px] w-full overflow-hidden">
+//                         <img
+//                           src={item.thumbnail}
+//                           alt=""
+//                           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+//                         />
+
+//                         <div className="absolute inset-0 bg-black/30" />
+
+//                         {/* PLAY BUTTON */}
+
+//                         <div className="absolute inset-0 flex items-center justify-center">
+//                           <div className="flex h-20 w-20 items-center justify-center rounded-full bg-white/10 backdrop-blur-xl transition-all duration-300 group-hover:scale-110">
+//                             <Play className="ml-1 h-8 w-8 fill-white text-white" />
+//                           </div>
+//                         </div>
+//                       </div>
+//                     </motion.div>
+//                   ))}
+//               </div>
+
+//               {/* IMAGE CARDS */}
+
+//               <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+//                 {storytellingMedia
+//                   .filter((item) => item.type === 'image')
+//                   .map((item, index) => (
+//                     <motion.div
+//                       key={index}
+//                       initial={{ opacity: 0, y: 30 }}
+//                       whileInView={{ opacity: 1, y: 0 }}
+//                       transition={{ delay: index * 0.1 }}
+//                       whileHover={{ y: -5 }}
+//                       onClick={() => setSelectedMedia(item)}
+//                       className="group relative cursor-pointer overflow-hidden rounded-[28px] border border-white/10"
+//                     >
+//                       <div className="relative h-[240px] overflow-hidden">
+//                         <img
+//                           src={item.image}
+//                           alt=""
+//                           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+//                         />
+
+//                         <div className="absolute inset-0 bg-black/20" />
+//                       </div>
+//                     </motion.div>
+//                   ))}
+//               </div>
+
+//               {/* RESEARCH BOX */}
+
+//               <motion.div
+//                 initial={{ opacity: 0, y: 30 }}
+//                 whileInView={{ opacity: 1, y: 0 }}
+//                 transition={{ delay: 0.4 }}
+//                 className="mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-xl"
+//               >
+//                 <div className="flex items-start gap-5">
+//                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-cyan-400/10 text-cyan-300">
+//                     <Microscope className="h-7 w-7" />
+//                   </div>
+
+//                   <div>
+//                     <p className="text-xl font-semibold text-white">
+//                       Research Interests
+//                     </p>
+
+//                     <p className="mt-3 text-sm leading-relaxed text-zinc-400">
+//                       CRISPR Gene Editing, Molecular
+//                       Diagnostics, Precision Medicine, Rare
+//                       Disease Therapeutics, and
+//                       Bioengineering.
+//                     </p>
+//                   </div>
+//                 </div>
+//               </motion.div>
+//             </motion.div>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* MODAL / POPUP */}
+
+//       <AnimatePresence>
+//         {selectedMedia && (
+//           <motion.div
+//             initial={{ opacity: 0 }}
+//             animate={{ opacity: 1 }}
+//             exit={{ opacity: 0 }}
+//             onClick={() => setSelectedMedia(null)}
+//             className="fixed inset-0 z-[999] flex items-center justify-center bg-black/80 p-6 backdrop-blur-md"
+//           >
+//             <motion.div
+//               initial={{ scale: 0.9, opacity: 0 }}
+//               animate={{ scale: 1, opacity: 1 }}
+//               exit={{ scale: 0.9, opacity: 0 }}
+//               transition={{ duration: 0.3 }}
+//               onClick={(e) => e.stopPropagation()}
+//               className="relative w-full max-w-6xl overflow-hidden rounded-[32px] border border-white/10 bg-black"
+//             >
+//               {/* CLOSE */}
+
+//               <button
+//                 onClick={() => setSelectedMedia(null)}
+//                 className="absolute right-5 top-5 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-xl"
+//               >
+//                 <X className="h-5 w-5" />
+//               </button>
+
+//               {/* VIDEO */}
+
+//           {selectedMedia.type === 'video' ? (
+//   <div className="rounded-[28px] bg-black overflow-hidden">
+//     <iframe
+//       width="100%"
+//       height="700"
+//       src={selectedMedia.youtube}
+//       title="YouTube video player"
+//       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+//       allowFullScreen
+//       className="w-full"
+//       style={{
+//         border: 'none',
+//         pointerEvents: 'auto',
+//       }}
+//     />
+//   </div>
+// ) : (
+//   <div className="overflow-hidden rounded-[28px]">
+//     <img
+//       src={selectedMedia.image}
+//       alt=""
+//       className="w-full object-cover"
+//     />
+//   </div>
+// )}
+//             </motion.div>
+//           </motion.div>
+//         )}
+//       </AnimatePresence>
+//     </>
+//   );
+// }
+
+
+
+
+
+
+
+
+// import { useRef, useEffect, useState } from 'react';
+// import {
+//   motion,
+//   useInView,
+//   useSpring,
+//   useTransform,
+//   AnimatePresence,
+// } from 'framer-motion';
+
+// import {
+//   Award,
+//   BookOpen,
+//   Microscope,
+//   Users,
+//   Calendar,
+//   Play,
+//   X,
+//   GraduationCap,
+// } from 'lucide-react';
+
+// import aboutImg from '../images/heroImg/aboutImg.jpg';
+
+// /* =========================================
+//    STATS DATA
+// ========================================= */
+// const stats = [
+//   { label: 'Publications', value: 98, suffix: '+', icon: 'BookOpen' },
+//   { label: 'Citations', value: 1200, suffix: '+', icon: 'Award' },
+//   { label: 'Years Experience', value: 5, suffix: '+', icon: 'Calendar' },
+//   { label: 'PhD Students', value: 5, suffix: '', icon: 'Users' },
+// ];
+
+// /* =========================================
+//    TIMELINE DATA
+// ========================================= */
+// const timeline = [
+//   {
+//     year: 1999,
+//     title: 'PhD in Molecular Biology',
+//     description: 'MIT — Specialized in genetic engineering',
+//   },
+//   {
+//     year: 2003,
+//     title: 'Postdoctoral Fellow',
+//     description: 'Stanford University — CRISPR research',
+//   },
+//   {
+//     year: 2007,
+//     title: 'Assistant Professor',
+//     description: 'Harvard Medical School',
+//   },
+//   {
+//     year: 2012,
+//     title: 'Associate Professor',
+//     description: 'Promoted with tenure',
+//   },
+//   {
+//     year: 2018,
+//     title: 'Full Professor',
+//     description: 'Department Chair of Molecular Biology',
+//   },
+//   {
+//     year: 2020,
+//     title: 'Nobel Prize Nomination',
+//     description: 'For contributions to CRISPR technology',
+//   },
+//   {
+//     year: 2023,
+//     title: 'Director of Research',
+//     description: 'MIT Institute for Medical Engineering',
+//   },
+// ];
+
+// /* =========================================
+//    STORYTELLING MEDIA
+// ========================================= */
+// const storytellingMedia = [
+//   {
+//     type: 'video',
+//     thumbnail:
+//       'https://images.unsplash.com/photo-1532187643603-ba119ca4109e?q=80&w=1600&auto=format&fit=crop',
+//     youtube: 'https://www.youtube.com/embed/_1wSKuoAzUw?autoplay=1',
+//   },
+//   {
+//     type: 'video',
+//     thumbnail:
+//       'https://plus.unsplash.com/premium_photo-1664195074951-fe91ec456eed?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cG9kY2FzdCUyMHRodW1uYWlufGVufDB8fDB8fHww',
+//     youtube: 'https://www.youtube.com/embed/uT5a1oYCPng?autoplay=1',
+//   },
+//   {
+//     type: 'image',
+//     image:
+//       'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop',
+//   },
+//   {
+//     type: 'image',
+//     image:
+//       'https://plus.unsplash.com/premium_photo-1733342533441-c4309b51da17?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8YnJhaW4lMjBuZXJ2b3N8ZW58MHx8MHx8fDA%3D',
+//   },
+// ];
+
+// /* =========================================
+//    ANIMATED COUNTER
+// ========================================= */
+// function AnimatedCounter({
+//   value,
+//   suffix,
+// }: {
+//   value: number;
+//   suffix?: string;
+// }) {
+//   const ref = useRef<HTMLSpanElement>(null);
+//   const isInView = useInView(ref, { once: true });
+
+//   const spring = useSpring(0, {
+//     mass: 0.8,
+//     stiffness: 50,
+//     damping: 15,
+//   });
+
+//   const display = useTransform(spring, (current) => Math.round(current));
+
+//   useEffect(() => {
+//     if (isInView) {
+//       spring.set(value);
+//     }
+//   }, [isInView, spring, value]);
+
+//   return (
+//     <span ref={ref} className="tabular-nums">
+//       <motion.span>{display}</motion.span>
+//       {suffix}
+//     </span>
+//   );
+// }
+
+// /* =========================================
+//    MAIN COMPONENT
+// ========================================= */
+// export default function About() {
+//   const containerRef = useRef<HTMLDivElement>(null);
+//   const [selectedMedia, setSelectedMedia] = useState<any>(null);
+
+//   /* ESC KEY TO CLOSE MODAL */
+//   useEffect(() => {
+//     const handleKeyDown = (e: KeyboardEvent) => {
+//       if (e.key === 'Escape') {
+//         setSelectedMedia(null);
+//       }
+//     };
+//     window.addEventListener('keydown', handleKeyDown);
+//     return () => window.removeEventListener('keydown', handleKeyDown);
+//   }, []);
+
+//   return (
+//     <>
+//       <section
+//         id="about"
+//         className="relative overflow-hidden bg-gradient-to-b from-white via-sky-50/40 to-white py-32 text-slate-800"
+//       >
+//         {/* PREMIUM SKY BLUE & LIQUID CYAN GRADIENT MESH ACCENTS */}
+//         <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-40" />
+        
+//         {/* Glowing Ambient Mesh Orbs */}
+//         <div className="absolute top-[-100px] right-[-100px] h-[600px] w-[600px] rounded-full bg-sky-200/40 blur-[130px]" />
+//         <div className="absolute top-[40%] left-[-150px] h-[600px] w-[600px] rounded-full bg-cyan-100/50 blur-[140px]" />
+//         <div className="absolute bottom-[-100px] right-[-100px] h-[500px] w-[500px] rounded-full bg-blue-100/40 blur-[120px]" />
+
+//         {/* CONTAINER */}
+//         <div ref={containerRef} className="relative mx-auto max-w-7xl px-6">
+          
+//           {/* HEADER */}
+//           <motion.div
+//             initial={{ opacity: 0, y: 30 }}
+//             whileInView={{ opacity: 1, y: 0 }}
+//             viewport={{ once: true }}
+//             transition={{ duration: 0.8 }}
+//             className="mb-24 text-center"
+//           >
+//             <span className="inline-flex items-center rounded-full border border-sky-200 bg-sky-50/80 px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-sky-700 shadow-sm backdrop-blur-sm">
+//               About Researcher
+//             </span>
+
+//             <h2 className="mt-6 text-4xl font-extrabold leading-tight tracking-tight text-slate-950 md:text-6xl lg:text-7xl">
+//               Pioneering the Future of
+//               <br />
+//               <span className="bg-gradient-to-r from-sky-600 via-cyan-600 to-blue-600 bg-clip-text text-transparent">
+//                 Molecular Science
+//               </span>
+//             </h2>
+
+//             <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-600 font-medium">
+//               Dedicated to advancing molecular biology through precision research, innovation, and scientific mentorship across global institutions.
+//             </p>
+//           </motion.div>
+
+//           {/* MAIN SECTION */}
+//           <div className="mb-28 grid items-center gap-16 lg:grid-cols-2 relative z-10">
+            
+//             {/* PORTRAIT IMAGE with Sky Blue Shadows */}
+//             <motion.div
+//               initial={{ opacity: 0, x: -40 }}
+//               whileInView={{ opacity: 1, x: 0 }}
+//               viewport={{ once: true }}
+//               transition={{ duration: 0.8 }}
+//               className="relative group"
+//             >
+//               <div className="relative aspect-[4/5] overflow-hidden rounded-[40px] border border-sky-100 bg-white/80 p-3 shadow-[0_20px_50px_rgba(186,230,253,0.15)] transition-all duration-500 group-hover:scale-[1.01] group-hover:border-cyan-200 group-hover:shadow-[0_40px_80px_rgba(6,182,212,0.18)] backdrop-blur-md">
+//                 <div className="h-full w-full overflow-hidden rounded-[32px] relative">
+//                   <img
+//                     src={aboutImg}
+//                     alt="Scientist portrait"
+//                     className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+//                   />
+//                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-sky-950/10 to-transparent opacity-80" />
+//                 </div>
+
+//                 <div className="absolute left-8 top-8 rounded-full border border-sky-100 bg-white/90 px-4 py-1.5 shadow-md backdrop-blur-sm">
+//                   <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-sky-800">
+//                     Lead Scientist
+//                   </p>
+//                 </div>
+
+//                 <div className="absolute bottom-8 left-8 right-8">
+//                   <div className="rounded-2xl border border-sky-100 bg-white/95 p-5 shadow-lg backdrop-blur-xl">
+//                     <p className="text-xs font-bold uppercase tracking-[0.2em] text-sky-600">
+//                       Neuroscientist
+//                     </p>
+//                     <h3 className="mt-1.5 text-3xl font-bold tracking-tight text-slate-950">
+//                       Shipra Goswami
+//                     </h3>
+//                   </div>
+//                 </div>
+//               </div>
+//             </motion.div>
+
+//             {/* BIOGRAPHY CONTENT */}
+//             <div className="space-y-10">
+//               <motion.div
+//                 initial={{ opacity: 0, y: 30 }}
+//                 whileInView={{ opacity: 1, y: 0 }}
+//                 viewport={{ once: true }}
+//                 transition={{ duration: 0.7 }}
+//               >
+//                 <h3 className="mb-6 text-3xl font-bold tracking-tight text-slate-950 md:text-4xl lg:text-5xl">
+//                   Biography
+//                 </h3>
+
+//                 <div className="space-y-5 text-base md:text-lg leading-relaxed text-slate-600 font-medium">
+//                   <p>
+//                     Dr. Shipra is a globally recognized molecular biologist whose groundbreaking research in CRISPR-based therapies has transformed the future of genetic medicine.
+//                   </p>
+//                   <p>
+//                     With more than <strong className="text-slate-950">150 peer-reviewed publications</strong> and <strong className="text-slate-950">12,000+ citations</strong>, her work continues to influence modern molecular diagnostics and precision therapeutics worldwide.
+//                   </p>
+//                   <p>
+//                     Her laboratory develops advanced gene-editing technologies focused on cancer treatment, rare genetic disorders, and next-generation therapeutic systems.
+//                   </p>
+//                 </div>
+//               </motion.div>
+
+//               {/* QUICK INFO CARDS */}
+//               <motion.div
+//                 initial={{ opacity: 0, y: 30 }}
+//                 whileInView={{ opacity: 1, y: 0 }}
+//                 viewport={{ once: true }}
+//                 transition={{ delay: 0.1 }}
+//                 className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+//               >
+//                 {[
+//                   ['Research Focus', 'Gene Editing'],
+//                   ['Specialization', 'CRISPR Technology'],
+//                   ['Institution', 'MIT Research'],
+//                   ['Department', 'Molecular Biology'],
+//                 ].map((item, index) => (
+//                   <div
+//                     key={index}
+//                     className="group rounded-2xl border border-sky-100/60 bg-white/70 p-6 shadow-[0_8px_20px_rgba(186,230,253,0.08)] transition-all duration-300 hover:border-sky-300 hover:shadow-[0_12px_24px_rgba(6,182,212,0.1)] hover:-translate-y-1 backdrop-blur-sm"
+//                   >
+//                     <p className="mb-1.5 text-[11px] font-bold uppercase tracking-[0.15em] text-slate-400 group-hover:text-sky-600 transition-colors">
+//                       {item[0]}
+//                     </p>
+//                     <p className="text-lg font-semibold text-slate-900">
+//                       {item[1]}
+//                     </p>
+//                   </div>
+//                 ))}
+//               </motion.div>
+//             </div>
+//           </div>
+
+//           {/* STATS COUNTER SECTION */}
+//           <motion.div
+//             initial={{ opacity: 0, y: 30 }}
+//             whileInView={{ opacity: 1, y: 0 }}
+//             viewport={{ once: true }}
+//             transition={{ duration: 0.7 }}
+//             className="mb-28 grid grid-cols-2 gap-5 md:grid-cols-4 relative z-10"
+//           >
+//             {stats.map((stat, index) => (
+//               <motion.div
+//                 key={stat.label}
+//                 initial={{ opacity: 0, y: 20 }}
+//                 whileInView={{ opacity: 1, y: 0 }}
+//                 transition={{ delay: index * 0.08 }}
+//                 className="group rounded-3xl border border-sky-100/60 bg-white/80 p-8 text-center shadow-[0_15px_30px_rgba(186,230,253,0.1)] transition-all duration-500 hover:border-sky-300 hover:shadow-[0_20px_60px_rgba(6,182,212,0.12)] hover:-translate-y-2 backdrop-blur-sm"
+//               >
+//                 <div className="mb-5 flex justify-center relative">
+//                   <div className="absolute inset-0 rounded-full bg-sky-100/40 blur-lg group-hover:bg-sky-200/50 transition-colors"/>
+//                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-sky-50 text-sky-600 border border-sky-100 relative shadow-inner">
+//                     {stat.icon === 'BookOpen' && <BookOpen className="h-6 w-6" />}
+//                     {stat.icon === 'Award' && <Award className="h-6 w-6" />}
+//                     {stat.icon === 'Calendar' && <Calendar className="h-6 w-6" />}
+//                     {stat.icon === 'Users' && <Users className="h-6 w-6" />}
+//                   </div>
+//                 </div>
+
+//                 <div className="mb-2 text-4xl font-extrabold tracking-tight text-slate-950 lg:text-5xl">
+//                   <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+//                 </div>
+
+//                 <p className="text-xs font-bold uppercase tracking-[0.15em] text-slate-500 group-hover:text-sky-700 transition-colors">
+//                   {stat.label}
+//                 </p>
+//               </motion.div>
+//             ))}
+//           </motion.div>
+
+//           {/* TIMELINE + STORYTELLING GALLERY */}
+//           <div className="grid gap-20 lg:grid-cols-[1fr,0.9fr] relative z-10">
+            
+//             {/* TIMELINE SECTION */}
+//             <motion.div
+//               initial={{ opacity: 0, x: -30 }}
+//               whileInView={{ opacity: 1, x: 0 }}
+//               viewport={{ once: true }}
+//             >
+//               <h3 className="mb-10 text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">
+//                 Career Timeline
+//               </h3>
+
+//               <div className="relative border-l-[3px] border-sky-100 pl-10 ml-3 space-y-12">
+//                 {timeline.map((item, index) => (
+//                   <motion.div
+//                     key={index}
+//                     initial={{ opacity: 0, x: -15 }}
+//                     whileInView={{ opacity: 1, x: 0 }}
+//                     transition={{ delay: index * 0.08 }}
+//                     className="relative"
+//                   >
+//                     {/* Timeline Cap Node */}
+//                     <div className="absolute -left-[53px] top-1 h-8 w-8 rounded-full border-[3px] border-white bg-sky-50 flex items-center justify-center shadow-lg transition-colors hover:border-sky-200 hover:bg-sky-100 group">
+//                       <GraduationCap className="h-4 w-4 text-sky-500/70 group-hover:text-sky-600"/>
+//                     </div>
+
+//                     <div className="rounded-2xl border border-sky-100 bg-white/80 p-6 shadow-[0_10px_25px_rgba(186,230,253,0.08)] transition-all duration-300 hover:border-sky-300 hover:shadow-[0_15px_30px_rgba(6,182,212,0.1)] hover:-translate-y-1 backdrop-blur-sm">
+//                       <span className="text-xs font-bold text-sky-600 bg-sky-50 px-3 py-1.5 rounded-full border border-sky-100 shadow-inner">
+//                         {item.year}
+//                       </span>
+//                       <h4 className="mt-4 text-xl font-bold tracking-tight text-slate-950">
+//                         {item.title}
+//                       </h4>
+//                       <p className="mt-1.5 text-base leading-relaxed text-slate-600">
+//                         {item.description}
+//                       </p>
+//                     </div>
+//                   </motion.div>
+//                 ))}
+//               </div>
+//             </motion.div>
+
+//             {/* STORYTELLING GALLERY */}
+//             <motion.div
+//               initial={{ opacity: 0, x: 30 }}
+//               whileInView={{ opacity: 1, x: 0 }}
+//               viewport={{ once: true }}
+//             >
+//               <div className="mb-10">
+//                 <h3 className="text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">
+//                   Storytelling Gallery
+//                 </h3>
+//               </div>
+
+//               {/* VIDEO CARDS */}
+//               <div className="space-y-5">
+//                 {storytellingMedia
+//                   .filter((item) => item.type === 'video')
+//                   .map((item, index) => (
+//                     <motion.div
+//                       key={index}
+//                       initial={{ opacity: 0, y: 20 }}
+//                       whileInView={{ opacity: 1, y: 0 }}
+//                       transition={{ delay: index * 0.08 }}
+//                       whileHover={{ y: -5 }}
+//                       onClick={() => setSelectedMedia(item)}
+//                       className="group relative cursor-pointer overflow-hidden rounded-[24px] border border-sky-100 bg-white/80 p-2 shadow-[0_12px_24px_rgba(186,230,253,0.1)] transition-all hover:shadow-[0_20px_50px_rgba(6,182,212,0.15)] backdrop-blur-sm"
+//                     >
+//                       <div className="relative h-[220px] w-full overflow-hidden rounded-[18px]">
+//                         <img
+//                           src={item.thumbnail}
+//                           alt="Video thumbnail"
+//                           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+//                         />
+//                         <div className="absolute inset-0 bg-slate-950/20 group-hover:bg-slate-950/30 transition-colors" />
+
+//                         {/* PLAY BUTTON (Pulsing) */}
+//                         <div className="absolute inset-0 flex items-center justify-center">
+//                           <div className="relative flex items-center justify-center">
+//                             <div className="absolute h-20 w-20 rounded-full bg-sky-400 opacity-60 animate-ping group-hover:opacity-80"/>
+//                             <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-white text-sky-600 shadow-xl transition-all duration-300 group-hover:scale-110">
+//                               <Play className="ml-1 h-7 w-7 fill-current" />
+//                             </div>
+//                           </div>
+//                         </div>
+//                       </div>
+//                     </motion.div>
+//                   ))}
+//               </div>
+
+//               {/* IMAGE GRID */}
+//               <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
+//                 {storytellingMedia
+//                   .filter((item) => item.type === 'image')
+//                   .map((item, index) => (
+//                     <motion.div
+//                       key={index}
+//                       initial={{ opacity: 0, y: 20 }}
+//                       whileInView={{ opacity: 1, y: 0 }}
+//                       transition={{ delay: index * 0.08 }}
+//                       whileHover={{ y: -5 }}
+//                       onClick={() => setSelectedMedia(item)}
+//                       className="group relative cursor-pointer overflow-hidden rounded-[24px] border border-sky-100 bg-white/80 p-2 shadow-[0_12px_24px_rgba(186,230,253,0.1)] transition-all hover:shadow-[0_20px_50px_rgba(6,182,212,0.15)] backdrop-blur-sm"
+//                     >
+//                       <div className="relative h-[180px] overflow-hidden rounded-[18px]">
+//                         <img
+//                           src={item.image}
+//                           alt="Gallery item"
+//                           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+//                         />
+//                         <div className="absolute inset-0 bg-slate-950/5 group-hover:bg-slate-950/20 transition-colors" />
+//                       </div>
+//                     </motion.div>
+//                   ))}
+//               </div>
+
+//               {/* RESEARCH INTERESTS CARD */}
+//               <motion.div
+//                 initial={{ opacity: 0, y: 20 }}
+//                 whileInView={{ opacity: 1, y: 0 }}
+//                 transition={{ delay: 0.3 }}
+//                 className="mt-8 rounded-2xl border border-sky-100 bg-white/80 p-8 shadow-[0_15px_30px_rgba(186,230,253,0.12)] hover:border-sky-300 transition-colors backdrop-blur-sm"
+//               >
+//                 <div className="flex items-center gap-6">
+//                   <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-sky-50 text-sky-600 border border-sky-100 relative shadow-inner">
+//                     <Microscope className="h-6 w-6" />
+//                   </div>
+//                   <div>
+//                     <p className="text-xl font-bold text-slate-950">
+//                       Research Interests
+//                     </p>
+//                     <p className="mt-1.5 text-base leading-relaxed text-slate-600">
+//                       CRISPR Gene Editing, Molecular Diagnostics, Precision Medicine, Rare Disease Therapeutics, and Bioengineering.
+//                     </p>
+//                   </div>
+//                 </div>
+//               </motion.div>
+//             </motion.div>
+//           </div>
+//         </div>
+//       </section>
+
+//       {/* EXPANDED PREVIEW MODAL */}
+//       <AnimatePresence>
+//         {selectedMedia && (
+//           <motion.div
+//             initial={{ opacity: 0 }}
+//             animate={{ opacity: 1 }}
+//             exit={{ opacity: 0 }}
+//             onClick={() => setSelectedMedia(null)}
+//             className="fixed inset-0 z-[999] flex items-center justify-center bg-slate-950/70 p-4 md:p-6 backdrop-blur-md"
+//           >
+//             <motion.div
+//               initial={{ scale: 0.98, opacity: 0, y: 20 }}
+//               animate={{ scale: 1, opacity: 1, y: 0 }}
+//               exit={{ scale: 0.98, opacity: 0, y: 20 }}
+//               transition={{ duration: 0.3, ease: 'easeOut' }}
+//               onClick={(e) => e.stopPropagation()}
+//               className="relative w-full max-w-6xl overflow-hidden rounded-3xl border border-sky-100 bg-white p-3 shadow-2xl"
+//             >
+//               {/* CLOSE BUTTON */}
+//               <button
+//                 onClick={() => setSelectedMedia(null)}
+//                 className="absolute right-5 top-5 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-slate-950/80 text-white transition-colors hover:bg-slate-950"
+//               >
+//                 <X className="h-4.5 w-4.5" />
+//               </button>
+
+//               {/* CONTENT RENDER */}
+//               {selectedMedia.type === 'video' ? (
+//                 <div className="overflow-hidden rounded-xl bg-black aspect-video relative shadow-inner">
+//                   <iframe
+//                     width="100%"
+//                     height="100%"
+//                     src={selectedMedia.youtube}
+//                     title="YouTube video player"
+//                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+//                     allowFullScreen
+//                     className="w-full h-full border-none"
+//                   />
+//                 </div>
+//               ) : (
+//                 <div className="overflow-hidden rounded-xl max-h-[80vh] bg-slate-50">
+//                   <img
+//                     src={selectedMedia.image}
+//                     alt="Gallery expanded view"
+//                     className="w-full h-full object-contain mx-auto"
+//                   />
+//                 </div>
+//               )}
+//             </motion.div>
+//           </motion.div>
+//         )}
+//       </AnimatePresence>
+//     </>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import { useRef, useEffect, useState } from 'react';
 import {
   motion,
@@ -17,25 +1165,24 @@ import {
   Calendar,
   Play,
   X,
+  GraduationCap,
 } from 'lucide-react';
 
 import aboutImg from '../images/heroImg/aboutImg.jpg';
 
 /* =========================================
-   STATS
+   STATS DATA
 ========================================= */
-
 const stats = [
   { label: 'Publications', value: 98, suffix: '+', icon: 'BookOpen' },
   { label: 'Citations', value: 1200, suffix: '+', icon: 'Award' },
-  { label: 'Years Experience', value:5, suffix: '+', icon: 'Calendar' },
+  { label: 'Years Experience', value: 5, suffix: '+', icon: 'Calendar' },
   { label: 'PhD Students', value: 5, suffix: '', icon: 'Users' },
 ];
 
 /* =========================================
-   TIMELINE
+   TIMELINE DATA
 ========================================= */
-
 const timeline = [
   {
     year: 1999,
@@ -77,32 +1224,24 @@ const timeline = [
 /* =========================================
    STORYTELLING MEDIA
 ========================================= */
-
 const storytellingMedia = [
   {
     type: 'video',
     thumbnail:
       'https://images.unsplash.com/photo-1532187643603-ba119ca4109e?q=80&w=1600&auto=format&fit=crop',
-
-    youtube:
-      'https://www.youtube.com/embed/_1wSKuoAzUw?autoplay=1',
+    youtube: 'https://www.youtube.com/embed/_1wSKuoAzUw?autoplay=1',
   },
-
   {
     type: 'video',
     thumbnail:
       'https://plus.unsplash.com/premium_photo-1664195074951-fe91ec456eed?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cG9kY2FzdCUyMHRodW1uYWlufGVufDB8fDB8fHww',
-
-    youtube:
-      'https://www.youtube.com/embed/uT5a1oYCPng?autoplay=1',
+    youtube: 'https://www.youtube.com/embed/uT5a1oYCPng?autoplay=1',
   },
-
   {
     type: 'image',
     image:
       'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop',
   },
-
   {
     type: 'image',
     image:
@@ -113,7 +1252,6 @@ const storytellingMedia = [
 /* =========================================
    ANIMATED COUNTER
 ========================================= */
-
 function AnimatedCounter({
   value,
   suffix,
@@ -122,10 +1260,7 @@ function AnimatedCounter({
   suffix?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-
-  const isInView = useInView(ref, {
-    once: true,
-  });
+  const isInView = useInView(ref, { once: true });
 
   const spring = useSpring(0, {
     mass: 0.8,
@@ -133,9 +1268,7 @@ function AnimatedCounter({
     damping: 15,
   });
 
-  const display = useTransform(spring, (current) =>
-    Math.round(current)
-  );
+  const display = useTransform(spring, (current) => Math.round(current));
 
   useEffect(() => {
     if (isInView) {
@@ -154,273 +1287,218 @@ function AnimatedCounter({
 /* =========================================
    MAIN COMPONENT
 ========================================= */
-
 export default function About() {
   const containerRef = useRef<HTMLDivElement>(null);
-
   const [selectedMedia, setSelectedMedia] = useState<any>(null);
 
-  /* ESC CLOSE */
-
+  /* ESC KEY TO CLOSE MODAL */
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setSelectedMedia(null);
       }
     };
-
     window.addEventListener('keydown', handleKeyDown);
-
-    return () =>
-      window.removeEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
   return (
     <>
       <section
         id="about"
-        className="relative overflow-hidden bg-[#050816] py-32"
+        className="relative overflow-hidden bg-gradient-to-b from-white via-sky-50/40 to-white py-32 text-slate-800"
       >
-        {/* BACKGROUND */}
-
-        <div className="absolute inset-0 scientific-grid opacity-20" />
-
-        <div className="absolute top-[-250px] right-[-150px] h-[500px] w-[500px] rounded-full bg-cyan-500/10 blur-[140px]" />
-
-        <div className="absolute bottom-[-250px] left-[-150px] h-[500px] w-[500px] rounded-full bg-blue-500/10 blur-[140px]" />
+        {/* PREMIUM SKY BLUE & LIQUID CYAN GRADIENT MESH ACCENTS */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-40" />
+        
+        {/* Glowing Ambient Mesh Orbs */}
+        <div className="absolute top-[-100px] right-[-100px] h-[600px] w-[600px] rounded-full bg-sky-200/40 blur-[130px]" />
+        <div className="absolute top-[40%] left-[-150px] h-[600px] w-[600px] rounded-full bg-cyan-100/50 blur-[140px]" />
+        <div className="absolute bottom-[-100px] right-[-100px] h-[500px] w-[500px] rounded-full bg-blue-100/40 blur-[120px]" />
 
         {/* CONTAINER */}
-
-        <div
-          ref={containerRef}
-          className="relative mx-auto max-w-7xl px-6"
-        >
+        <div ref={containerRef} className="relative mx-auto max-w-7xl px-6">
+          
           {/* HEADER */}
-
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="mb-24 text-center"
           >
-            <span className="inline-flex items-center rounded-full border border-cyan-400/20 bg-white/5 px-5 py-2 text-sm uppercase tracking-[0.25em] text-cyan-300 backdrop-blur-md">
+            <span className="inline-flex items-center rounded-full border border-sky-200 bg-sky-50/80 px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-sky-700 shadow-sm backdrop-blur-sm">
               About Researcher
             </span>
 
-            <h2 className="mt-8 text-5xl font-bold leading-tight tracking-tight text-white md:text-7xl">
+            <h2 className="mt-6 text-4xl font-extrabold leading-tight tracking-tight text-slate-950 md:text-6xl lg:text-7xl">
               Pioneering the Future of
               <br />
-
-              <span className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-sky-600 via-cyan-600 to-blue-600 bg-clip-text text-transparent">
                 Molecular Science
               </span>
             </h2>
-
-            <p className="mx-auto mt-8 max-w-3xl text-lg leading-relaxed text-zinc-400">
-              Dedicated to advancing molecular biology through
-              precision research, innovation, and scientific
-              mentorship across global institutions.
-            </p>
           </motion.div>
 
-          {/* MAIN SECTION */}
-
-          <div className="mb-28 grid items-center gap-20 lg:grid-cols-2">
-            {/* IMAGE */}
-
+          {/* MAIN PROFILE ROW (Balanced Left/Right Professional Architecture) */}
+          <div className="mb-28 grid items-center gap-12 lg:grid-cols-[0.8fr_1.2fr] relative z-10 max-w-6xl mx-auto">
+            
+            {/* COMPACT & SHARP PORTRAIT CONTAINER */}
             <motion.div
-              initial={{ opacity: 0, x: -60 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 1 }}
-              className="relative"
+              transition={{ duration: 0.7 }}
+              className="flex justify-center lg:justify-start"
             >
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[32px] border border-white/10 bg-white/5 shadow-[0_0_80px_rgba(0,255,255,0.08)] backdrop-blur-2xl">
-                <img
-                  src={aboutImg}
-                  alt="Scientist portrait"
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050816] via-[#050816]/20 to-transparent" />
-
-                <div className="absolute left-6 top-6 rounded-full border border-white/10 bg-black/40 px-4 py-2 backdrop-blur-xl">
-                  <p className="text-[11px] uppercase tracking-[0.3em] text-cyan-300">
-                    Lead Scientist
-                  </p>
-                </div>
-
-                <div className="absolute bottom-6 left-6 right-6">
-                  <div className="rounded-3xl border border-white/10 bg-black/30 p-6 backdrop-blur-2xl">
-                    <p className="text-sm uppercase tracking-[0.28em] text-cyan-300">
-                      Neuroscientist
-                    </p>
-
-                    <h3 className="mt-3 text-3xl font-semibold text-white">
-                      Shipra Goswami
-                    </h3>
-                  </div>
+              <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 overflow-hidden rounded-[32px] border border-sky-100 bg-white p-3 shadow-[0_15px_45px_rgba(186,230,253,0.15)] transition-all duration-500 hover:border-cyan-200 hover:shadow-[0_25px_55px_rgba(6,182,212,0.18)] backdrop-blur-sm">
+                <div className="h-full w-full overflow-hidden rounded-[22px] relative bg-slate-50">
+                  <img
+                    src={aboutImg}
+                    alt="Dr. Shipra Goswami Executive portrait"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
                 </div>
               </div>
             </motion.div>
 
-            {/* CONTENT */}
-
-            <div className="space-y-10">
+            {/* CORPORATE RESEARCH BIOGRAPHY STATEMENT */}
+            <div className="space-y-6 text-left">
               <motion.div
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
               >
-                <h3 className="mb-8 text-4xl font-bold text-white">
-                  Biography
+                <div className="flex items-center gap-2.5 mb-3">
+                  <div className="h-[2px] w-8 bg-gradient-to-r from-sky-500 to-cyan-400" />
+                  <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-sky-700 bg-sky-50 px-2.5 py-1 rounded-md border border-sky-100/60 shadow-inner">
+                    Lead Investigator
+                  </span>
+                </div>
+
+                <h3 className="text-2xl font-black tracking-tight text-slate-950 md:text-3xl lg:text-4xl">
+                  Dr. Shipra Goswami
                 </h3>
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-600 mt-1">
+                  Molecular Biologist & Neuroscientist
+                </p>
 
-                <div className="space-y-6 text-lg leading-relaxed text-zinc-400">
+                <div className="mt-6 space-y-4 text-base leading-relaxed text-slate-600 font-medium">
                   <p>
-                    Dr. Shipra is a globally recognized
-                    molecular biologist whose groundbreaking
-                    research in CRISPR-based therapies has
-                    transformed the future of genetic medicine.
+                    Dr. Shipra is a globally recognized molecular biologist whose groundbreaking research in CRISPR-based therapies has transformed the future of genetic medicine.
                   </p>
-
                   <p>
-                    With more than 150 peer-reviewed
-                    publications and 12,000+ citations, her
-                    work continues to influence modern
-                    molecular diagnostics and precision
-                    therapeutics worldwide.
+                    With more than <strong className="text-slate-950 font-bold">150 peer-reviewed publications</strong> and <strong className="text-slate-950 font-bold">12,000+ citations</strong>, her work continues to influence modern molecular diagnostics and precision therapeutics worldwide.
                   </p>
-
                   <p>
-                    Her laboratory develops advanced
-                    gene-editing technologies focused on
-                    cancer treatment, rare genetic disorders,
-                    and next-generation therapeutic systems.
+                    Her laboratory develops advanced gene-editing technologies focused on cancer treatment, rare genetic disorders, and next-generation therapeutic systems.
                   </p>
                 </div>
               </motion.div>
 
-              {/* INFO CARDS */}
-
+              {/* CRISP METADATA HORIZONTAL FLEX BADGES */}
               <motion.div
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="grid grid-cols-2 gap-5"
+                className="pt-2 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap"
               >
                 {[
                   ['Research Focus', 'Gene Editing'],
-                  ['Specialization', 'CRISPR Technology'],
+                  ['Specialization', 'CRISPR Tech'],
                   ['Institution', 'MIT Research'],
-                  ['Department', 'Molecular Biology'],
+                  ['Department', 'Molecular Bio'],
                 ].map((item, index) => (
                   <div
                     key={index}
-                    className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-xl transition-all duration-300 hover:border-cyan-400/30"
+                    className="rounded-xl border border-sky-100/60 bg-white/70 px-4 py-2.5 shadow-sm backdrop-blur-sm"
                   >
-                    <p className="mb-2 text-xs uppercase tracking-[0.22em] text-zinc-500">
+                    <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-slate-400">
                       {item[0]}
                     </p>
-
-                    <p className="font-medium text-white">
+                    <p className="text-xs font-bold text-slate-800 mt-0.5">
                       {item[1]}
                     </p>
                   </div>
                 ))}
               </motion.div>
             </div>
+
           </div>
 
-          {/* STATS */}
-
+          {/* STATS COUNTER SECTION */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="mb-28 grid grid-cols-2 gap-6 md:grid-cols-4"
+            className="mb-28 grid grid-cols-2 gap-5 md:grid-cols-4 relative z-10"
           >
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                className="rounded-3xl border border-white/10 bg-white/[0.03] p-8 text-center backdrop-blur-2xl transition-all duration-300 hover:border-cyan-400/20"
+                transition={{ delay: index * 0.08 }}
+                className="group rounded-3xl border border-sky-100/60 bg-white/80 p-8 text-center shadow-[0_15px_30px_rgba(186,230,253,0.1)] transition-all duration-500 hover:border-sky-300 hover:shadow-[0_20px_60px_rgba(6,182,212,0.12)] hover:-translate-y-2 backdrop-blur-sm"
               >
-                <div className="mb-5 flex justify-center">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-cyan-400/10 text-cyan-300">
-                    {stat.icon === 'BookOpen' && (
-                      <BookOpen className="h-6 w-6" />
-                    )}
-
-                    {stat.icon === 'Award' && (
-                      <Award className="h-6 w-6" />
-                    )}
-
-                    {stat.icon === 'Calendar' && (
-                      <Calendar className="h-6 w-6" />
-                    )}
-
-                    {stat.icon === 'Users' && (
-                      <Users className="h-6 w-6" />
-                    )}
+                <div className="mb-4 flex justify-center relative">
+                  <div className="absolute inset-0 rounded-full bg-sky-100/40 blur-lg group-hover:bg-sky-200/50 transition-colors"/>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-sky-50 text-sky-600 border border-sky-100 relative shadow-inner">
+                    {stat.icon === 'BookOpen' && <BookOpen className="h-5 w-5" />}
+                    {stat.icon === 'Award' && <Award className="h-5 w-5" />}
+                    {stat.icon === 'Calendar' && <Calendar className="h-5 w-5" />}
+                    {stat.icon === 'Users' && <Users className="h-5 w-5" />}
                   </div>
                 </div>
 
-                <div className="mb-3 text-5xl font-bold text-white">
-                  <AnimatedCounter
-                    value={stat.value}
-                    suffix={stat.suffix}
-                  />
+                <div className="mb-1 text-4xl font-extrabold tracking-tight text-slate-950 lg:text-5xl">
+                  <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                 </div>
 
-                <p className="text-sm uppercase tracking-[0.18em] text-zinc-500">
+                <p className="text-xs font-bold uppercase tracking-[0.15em] text-slate-500 group-hover:text-sky-700 transition-colors">
                   {stat.label}
                 </p>
               </motion.div>
             ))}
           </motion.div>
 
-          {/* TIMELINE + STORYTELLING */}
-
-          <div className="grid gap-16 lg:grid-cols-2">
-            {/* TIMELINE */}
-
+          {/* TIMELINE + STORYTELLING GALLERY */}
+          <div className="grid gap-20 lg:grid-cols-[1fr,0.9fr] relative z-10">
+            
+            {/* TIMELINE SECTION */}
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <h3 className="mb-10 text-3xl font-bold text-white">
+              <h3 className="mb-10 text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">
                 Career Timeline
               </h3>
 
-              <div className="relative border-l border-white/10 pl-8">
+              <div className="relative border-l-[3px] border-sky-100 pl-10 ml-3 space-y-12">
                 {timeline.map((item, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, x: -15 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="relative pb-10"
+                    transition={{ delay: index * 0.08 }}
+                    className="relative"
                   >
-                    <div className="absolute -left-[38px] top-2 h-4 w-4 rounded-full bg-cyan-300 shadow-[0_0_25px_rgba(0,255,255,0.8)]" />
+                    <div className="absolute -left-[53px] top-1 h-8 w-8 rounded-full border-[3px] border-white bg-sky-50 flex items-center justify-center shadow-lg transition-colors hover:border-sky-200 hover:bg-sky-100 group">
+                      <GraduationCap className="h-4 w-4 text-sky-500/70 group-hover:text-sky-600"/>
+                    </div>
 
-                    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl">
-                      <span className="text-sm font-semibold text-cyan-300">
+                    <div className="rounded-2xl border border-sky-100 bg-white/80 p-6 shadow-[0_10px_25px_rgba(186,230,253,0.08)] transition-all duration-300 hover:border-sky-300 hover:shadow-[0_15px_30px_rgba(6,182,212,0.1)] hover:-translate-y-1 backdrop-blur-sm">
+                      <span className="text-xs font-bold text-sky-600 bg-sky-50 px-3 py-1.5 rounded-full border border-sky-100 shadow-inner">
                         {item.year}
                       </span>
-
-                      <h4 className="mt-2 text-xl font-semibold text-white">
+                      <h4 className="mt-4 text-xl font-bold tracking-tight text-slate-950">
                         {item.title}
                       </h4>
-
-                      <p className="mt-2 text-sm leading-relaxed text-zinc-400">
+                      <p className="mt-1.5 text-base leading-relaxed text-slate-600">
                         {item.description}
                       </p>
                     </div>
@@ -429,48 +1507,46 @@ export default function About() {
               </div>
             </motion.div>
 
-            {/* STORYTELLING */}
-
+            {/* STORYTELLING GALLERY */}
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
+              initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
               <div className="mb-10">
-                <h3 className="text-3xl font-bold text-white">
+                <h3 className="text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">
                   Storytelling Gallery
                 </h3>
               </div>
 
-              {/* VIDEO BANNERS */}
-
-              <div className="space-y-6">
+              {/* VIDEO CARDS */}
+              <div className="space-y-5">
                 {storytellingMedia
                   .filter((item) => item.type === 'video')
                   .map((item, index) => (
                     <motion.div
                       key={index}
-                      initial={{ opacity: 0, y: 30 }}
+                      initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
+                      transition={{ delay: index * 0.08 }}
                       whileHover={{ y: -5 }}
                       onClick={() => setSelectedMedia(item)}
-                      className="group relative cursor-pointer overflow-hidden rounded-[30px] border border-white/10"
+                      className="group relative cursor-pointer overflow-hidden rounded-[24px] border border-sky-100 bg-white/80 p-2 shadow-[0_12px_24px_rgba(186,230,253,0.1)] transition-all hover:shadow-[0_20px_50px_rgba(6,182,212,0.15)] backdrop-blur-sm"
                     >
-                      <div className="relative h-[240px] w-full overflow-hidden">
+                      <div className="relative h-[220px] w-full overflow-hidden rounded-[18px]">
                         <img
                           src={item.thumbnail}
-                          alt=""
+                          alt="Video thumbnail"
                           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
-
-                        <div className="absolute inset-0 bg-black/30" />
-
-                        {/* PLAY BUTTON */}
+                        <div className="absolute inset-0 bg-slate-950/20 group-hover:bg-slate-950/30 transition-colors" />
 
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="flex h-20 w-20 items-center justify-center rounded-full bg-white/10 backdrop-blur-xl transition-all duration-300 group-hover:scale-110">
-                            <Play className="ml-1 h-8 w-8 fill-white text-white" />
+                          <div className="relative flex items-center justify-center">
+                            <div className="absolute h-20 w-20 rounded-full bg-sky-400 opacity-60 animate-ping group-hover:opacity-80"/>
+                            <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-white text-sky-600 shadow-xl transition-all duration-300 group-hover:scale-110">
+                              <Play className="ml-1 h-7 w-7 fill-current" />
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -478,57 +1554,49 @@ export default function About() {
                   ))}
               </div>
 
-              {/* IMAGE CARDS */}
-
-              <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+              {/* IMAGE GRID */}
+              <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
                 {storytellingMedia
                   .filter((item) => item.type === 'image')
                   .map((item, index) => (
                     <motion.div
                       key={index}
-                      initial={{ opacity: 0, y: 30 }}
+                      initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
+                      transition={{ delay: index * 0.08 }}
                       whileHover={{ y: -5 }}
                       onClick={() => setSelectedMedia(item)}
-                      className="group relative cursor-pointer overflow-hidden rounded-[28px] border border-white/10"
+                      className="group relative cursor-pointer overflow-hidden rounded-[24px] border border-sky-100 bg-white/80 p-2 shadow-[0_12px_24px_rgba(186,230,253,0.1)] transition-all hover:shadow-[0_20px_50px_rgba(6,182,212,0.15)] backdrop-blur-sm"
                     >
-                      <div className="relative h-[240px] overflow-hidden">
+                      <div className="relative h-[180px] overflow-hidden rounded-[18px]">
                         <img
                           src={item.image}
-                          alt=""
-                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                          alt="Gallery item"
+                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
-
-                        <div className="absolute inset-0 bg-black/20" />
+                        <div className="absolute inset-0 bg-slate-950/5 group-hover:bg-slate-950/20 transition-colors" />
                       </div>
                     </motion.div>
                   ))}
               </div>
 
-              {/* RESEARCH BOX */}
-
+              {/* RESEARCH INTERESTS CARD */}
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="mt-8 rounded-3xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-xl"
+                transition={{ delay: 0.3 }}
+                className="mt-8 rounded-2xl border border-sky-100 bg-white/80 p-8 shadow-[0_15px_30px_rgba(186,230,253,0.12)] hover:border-sky-300 transition-colors backdrop-blur-sm"
               >
-                <div className="flex items-start gap-5">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-cyan-400/10 text-cyan-300">
-                    <Microscope className="h-7 w-7" />
+                <div className="flex items-center gap-6">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-sky-50 text-sky-600 border border-sky-100 relative shadow-inner">
+                    <Microscope className="h-6 w-6" />
                   </div>
-
                   <div>
-                    <p className="text-xl font-semibold text-white">
+                    <p className="text-xl font-bold text-slate-950">
                       Research Interests
                     </p>
-
-                    <p className="mt-3 text-sm leading-relaxed text-zinc-400">
-                      CRISPR Gene Editing, Molecular
-                      Diagnostics, Precision Medicine, Rare
-                      Disease Therapeutics, and
-                      Bioengineering.
+                    <p className="mt-1.5 text-base leading-relaxed text-slate-600">
+                      CRISPR Gene Editing, Molecular Diagnostics, Precision Medicine, Rare Disease Therapeutics, and Bioengineering.
                     </p>
                   </div>
                 </div>
@@ -538,8 +1606,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* MODAL / POPUP */}
-
+      {/* EXPANDED PREVIEW MODAL */}
       <AnimatePresence>
         {selectedMedia && (
           <motion.div
@@ -547,52 +1614,46 @@ export default function About() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedMedia(null)}
-            className="fixed inset-0 z-[999] flex items-center justify-center bg-black/80 p-6 backdrop-blur-md"
+            className="fixed inset-0 z-[999] flex items-center justify-center bg-slate-950/70 p-4 md:p-6 backdrop-blur-md"
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.3 }}
+              initial={{ scale: 0.98, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.98, opacity: 0, y: 20 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
               onClick={(e) => e.stopPropagation()}
-              className="relative w-full max-w-6xl overflow-hidden rounded-[32px] border border-white/10 bg-black"
+              className="relative w-full max-w-6xl overflow-hidden rounded-3xl border border-sky-100 bg-white p-3 shadow-2xl"
             >
-              {/* CLOSE */}
-
+              {/* CLOSE BUTTON */}
               <button
                 onClick={() => setSelectedMedia(null)}
-                className="absolute right-5 top-5 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-xl"
+                className="absolute right-5 top-5 z-50 flex h-11 w-11 items-center justify-center rounded-full bg-slate-950/80 text-white transition-colors hover:bg-slate-950"
               >
-                <X className="h-5 w-5" />
+                <X className="h-4.5 w-4.5" />
               </button>
 
-              {/* VIDEO */}
-
-          {selectedMedia.type === 'video' ? (
-  <div className="rounded-[28px] bg-black overflow-hidden">
-    <iframe
-      width="100%"
-      height="700"
-      src={selectedMedia.youtube}
-      title="YouTube video player"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowFullScreen
-      className="w-full"
-      style={{
-        border: 'none',
-        pointerEvents: 'auto',
-      }}
-    />
-  </div>
-) : (
-  <div className="overflow-hidden rounded-[28px]">
-    <img
-      src={selectedMedia.image}
-      alt=""
-      className="w-full object-cover"
-    />
-  </div>
-)}
+              {/* CONTENT RENDER */}
+              {selectedMedia.type === 'video' ? (
+                <div className="overflow-hidden rounded-xl bg-black aspect-video relative shadow-inner">
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    src={selectedMedia.youtube}
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    className="w-full h-full border-none"
+                  />
+                </div>
+              ) : (
+                <div className="overflow-hidden rounded-xl max-h-[80vh] bg-slate-50">
+                  <img
+                    src={selectedMedia.image}
+                    alt="Gallery expanded view"
+                    className="w-full h-full object-contain mx-auto"
+                  />
+                </div>
+              )}
             </motion.div>
           </motion.div>
         )}
@@ -600,4 +1661,3 @@ export default function About() {
     </>
   );
 }
-
